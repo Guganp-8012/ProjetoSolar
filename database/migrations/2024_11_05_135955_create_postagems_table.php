@@ -12,7 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('postagems', function (Blueprint $table) {
-            $table->id();
+            $table->id('titulo');
+            $table->unsignedBigInteger('empresa_id');
+            $table->longText('conteudo');
+            $table->date('data');
+            $table->foreign('empresa_id')
+                ->references('id')
+                ->on('empresas')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
