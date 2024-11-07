@@ -1,10 +1,21 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\PostagemController;
+use App\Http\Controllers\ComentarioController;
+use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\ServicoController;
+use App\Http\Controllers\SolicitacaoServicoController;
+
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home-index');
 });
 
 Route::get('/dashboard', function () {

@@ -17,7 +17,22 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ['nome', 'email', 'senha', 'foto', 'cpf', 'telefone'];
+    protected $fillable = ['name', 'apelido', 'email', 'password', 'foto', 'cpf', 'telefone'];
+
+    public function comentario()
+    {
+        return $this->hasMany(Comentario::class);
+    }
+
+    public function servico()
+    {
+        return $this->hasMany(Servico::class);
+    }
+
+    public function solicitacaoServico()
+    {
+        return $this->hasMany(SolicitacaoServico::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
