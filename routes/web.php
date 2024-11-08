@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\PostagemController;
 use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\EmpresaController;
