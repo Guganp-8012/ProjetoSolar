@@ -14,11 +14,16 @@ return new class extends Migration
         Schema::create('postagems', function (Blueprint $table) {
             $table->id('titulo');
             $table->unsignedBigInteger('empresa_id');
+            $table->unsignedBigInteger('categoria_id');
             $table->longText('conteudo');
             $table->date('data');
             $table->foreign('empresa_id')
                 ->references('id')
                 ->on('empresas')
+                ->onDelete('cascade');
+            $table->foreign('categoria_id')
+                ->references('id')
+                ->on('categorias')
                 ->onDelete('cascade');
             $table->timestamps();
         });
