@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('home-index');
 });
 
+Route::get('/contato', function () {
+    return view('empresa.contato');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

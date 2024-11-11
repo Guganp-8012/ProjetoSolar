@@ -3,42 +3,52 @@
 @section('title', 'Homepage')
 
 @section('content')
-    <ul class="nav justify-content-center" id="pills-tab" role="tablist" style="display: flex; width: 100%;">
-        <li class="nav-item">
-            <a class="nav-link" href="#" role="tab" aria-selected="false">Home</a>
-        </li>
-    
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explorar+</a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="#">Serviços</a>
-                <a class="dropdown-item" href="#">Perguntas Frequentes</a>
-                <a class="dropdown-item" href="#">Nosso time</a>
-                <a class="dropdown-item" href="#">Simulador</a>
-                <a class="dropdown-item" href="#">Página 404</a>
-            </div>
-        </li>
+    <div class="row">
+        <div class="col"></div>
 
-        <li class="nav-item">
-            <a class="nav-link" href="#" role="tab" aria-selected="false">Sobre Nós</a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link" href="#" role="tab" aria-selected="false">Blog</a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link" href="#" role="tab" aria-selected="false">Contatos</a>
-        </li>
+        <div class="col">
+            <ul class="nav justify-content-center" id="pills-tab" role="tablist" style="display: flex; width: 100%;">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a> <!-- home -->
+                </li>
+            
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explorar+</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#">Serviços</a> <!-- servico -->
+                        <a class="dropdown-item" href="#">Perguntas Frequentes</a>  <!-- perguntas-frequentes -->
+                        <a class="dropdown-item" href="#">Nosso time</a>  <!-- empresa/sobre -->
+                        <a class="dropdown-item" href="#simulador">Simulador</a>
+                        <a class="dropdown-item" href="#">Política de privacidade</a>  <!-- politica-privacidade -->
+                        <a class="dropdown-item" href="#">Página 404</a>  <!-- ## -->
+                    </div>
+                </li>
 
-        <li class="nav-item" style="align-self: flex-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sobre Nós</a> <!-- empresa/sobre -->
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#portifolio">Portfólio</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Blog</a> <!-- blog -->
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="# ">Contatos</a> <!-- contato -->
+                </li>
+            </ul>
+        </div>
+        
+        <div class="col d-flex justify-content-start">
             <!-- Botão para acionar modal -->
             <button onclick="abrirModal()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
                 Login
             </button>
-        </li>
-    </ul>
-    
+        </div>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -63,7 +73,6 @@
                             <label for="password">Senha</label>
                             <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha" required>
                         </div>
-                        
                     </form>
                 </div>
 
