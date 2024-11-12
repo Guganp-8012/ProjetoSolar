@@ -11,11 +11,16 @@ class Empresa extends Model
 
     protected $fillable = ['razao_social', 'logo', 'email', 'telefone', 'endereco', 'descricao'];
 
-    public function postagem()
+    public function depoimento()
     {
-        return $this->hasMany(Postagem::class);
+        return $this->hasMany(Depoimento::class);
     }
 
+    public function contateNos()
+    {
+        return $this->hasMany(ContateNos::class);
+    }
+    
     public function servico()
     {
         return $this->hasMany(Servico::class);

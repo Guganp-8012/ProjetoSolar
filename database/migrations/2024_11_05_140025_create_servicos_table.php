@@ -13,19 +13,9 @@ return new class extends Migration
     {
         Schema::create('servicos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('solicitacao_servico_id')->nullable();
-            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('empresa_id');
             $table->string('tipo_servico');
             $table->text('descricao')->nullable();
-            $table->foreign('solicitacao_servico_id')
-                ->references('id')
-                ->on('solicitacao_servicos')
-                ->onDelete('cascade');
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
             $table->foreign('empresa_id')
                 ->references('id')
                 ->on('empresas')

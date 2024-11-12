@@ -17,21 +17,30 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ['name', 'apelido', 'email', 'password', 'foto', 'cpf', 'telefone'];
+    protected $fillable = ['name', 'apelido', 'email', 'password', 'foto', 'telefone', 'funcionario'];
+    
+    // Relacionamento 1:1 com Depoimento
+    public function depoimento()
+    {
+        return $this->hasOne(Depoimento::class);
+    }
+    
+    // Relacionamento 1:N com ContateNos
+    public function contateNos()
+    {
+        return $this->hasMany(ContateNos::class);
+    }
 
+    // Relacionamento 1:N com Comentario
     public function comentario()
     {
         return $this->hasMany(Comentario::class);
     }
 
-    public function servico()
+    // Relacionamento 1:N com Postagem
+    public function postagem()
     {
-        return $this->hasMany(Servico::class);
-    }
-
-    public function solicitacaoServico()
-    {
-        return $this->hasMany(SolicitacaoServico::class);
+        return $this->hasMany(Postagem::class);
     }
 
     /**

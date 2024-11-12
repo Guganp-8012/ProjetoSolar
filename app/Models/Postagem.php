@@ -9,11 +9,11 @@ class Postagem extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['titulo', 'conteudo', 'data', 'empresa_id', 'categoria_id'];
+    protected $fillable = ['titulo', 'conteudo', 'data', 'user_id', 'categoria_id'];
 
-    public function empresa()
+    public function user()
     {
-        return $this->belongsTo(Empresa::class);
+        return $this->belongsTo(User::class);
     }
     
     public function categoria()

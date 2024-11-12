@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SolicitacaoServico;
+use App\Models\Depoimento;
 use Illuminate\Http\Request;
 
-class SolicitacaoServicoController extends Controller
+class DepoimentoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class SolicitacaoServicoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(SolicitacaoServico $solicitacaoServico)
+    public function show(Depoimento $depoimento)
     {
         //
     }
@@ -42,7 +42,7 @@ class SolicitacaoServicoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SolicitacaoServico $solicitacaoServico)
+    public function edit(Depoimento $depoimento)
     {
         //
     }
@@ -50,7 +50,7 @@ class SolicitacaoServicoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SolicitacaoServico $solicitacaoServico)
+    public function update(Request $request, Depoimento $depoimento)
     {
         //
     }
@@ -58,7 +58,7 @@ class SolicitacaoServicoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SolicitacaoServico $solicitacaoServico)
+    public function destroy(Depoimento $depoimento)
     {
         //
     }
