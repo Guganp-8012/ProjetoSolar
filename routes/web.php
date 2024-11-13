@@ -10,26 +10,32 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\PostagemController;
 use App\Http\Controllers\ServicoController;
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+Route::get('/', function () {return view('homepage');})->name('homepage');
 
-Route::get('/', function () {
-    return view('home-index');
-});
+Route::get('/politica-de-privacidade', function () {return view('politica-privacidade.index');})->name('politica-privacidade.index');
 
-Route::get('/blog', function () {
-    return view('blog.index');
-});
+Route::get('/faqs', [ContateNosController::class, 'index'])->name('FAQ.index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/blog', [PostagemController::class, 'index'])->name('blog.index');
+Route::get('/blog/{id}', [PostagemController::class, 'show'])->name('blog.postagem-detalhes');
+
+Route::get('/servico', [ServicoController::class, 'index'])->name('servico.index');
+
+Route::get('/sobre', [EmpresaController::class, 'index'])->name('empresa.sobre');
+Route::get('/contatos', [EmpresaController::class, 'index'])->name('empresa.contato');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('laravel.dashboard');
 
 require __DIR__.'/auth.php';

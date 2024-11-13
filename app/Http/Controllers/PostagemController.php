@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Empresa;
+use App\Models\Postagem;
+use App\Models\User;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class PostagemController extends Controller
@@ -12,7 +14,9 @@ class PostagemController extends Controller
      */
     public function index()
     {
-        //
+        $postagens = Postagem::with('user', 'categoria')->get();
+
+        return view('blog.index', ['postagens' => $postagens]);
     }
 
     /**
@@ -28,21 +32,43 @@ class PostagemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'required|integer',
+            'categoria_id' => 'required|integer',
+            'titulo' => 'required|string|max:255',
+            'foto' => 'nullable|file|mimes:jpg,png,jpeg|max:2048',
+            'conteudo' => 'required|string',
+            'data' => 'required|date',
+        ]);
+
+        $foto_camimho = $request->file('foto')->store('fotos', 'public');
+
+        $postagem = Postagem::create([
+            'user_id' => $request->user_id,
+            'categoria_id' => $request->categoria_id,
+            'titulo' => $request->titulo,
+            'foto' => $foto_camimho,
+            'conteudo' => $request->conteudo,
+            'data' => $request->data,
+        ]);
+
+        return redirect()->route('blog.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Empresa $empresa)
+    public function show($id)
     {
-        //
+        $postagem = Postagem::with('user', 'categoria')->find($id);
+
+        return view('postagem-detalhes', compact('postagem'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Empresa $empresa)
+    public function edit(Postagem $postagem)
     {
         //
     }
@@ -50,7 +76,7 @@ class PostagemController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Empresa $empresa)
+    public function update(Request $request, Postagem $postagem)
     {
         //
     }
@@ -58,7 +84,7 @@ class PostagemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Empresa $empresa)
+    public function destroy(Postagem $postagem)
     {
         //
     }

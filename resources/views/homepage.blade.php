@@ -3,61 +3,53 @@
 @section('title', 'Homepage')
 
 @section('content')
-    <div class="row">
-        <div class="col"></div>
+    <ul class="nav justify-content-center" id="pills-tab" role="tablist" style="display: flex; width: 100%;">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('homepage') }}">Home</a>
+        </li>
+    
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explorar+</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{{ route('servico.index') }}">Serviços</a>
+                <a class="dropdown-item" href="{{ route('empresa.sobre') }}">Nosso time</a>
+                <a class="dropdown-item" href="#simulador">Simulador</a>
+                <a class="dropdown-item" href="{{ route('FAQ.index') }}">Perguntas Frequentes</a>
+                <a class="dropdown-item" href="{{ route('politica-privacidade.index') }}">Política de privacidade</a>
+                <a class="dropdown-item" href="#">Página 404</a>  <!-- ## -->
+            </div>
+        </li>
 
-        <div class="col">
-            <ul class="nav justify-content-center" id="pills-tab" role="tablist" style="display: flex; width: 100%;">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a> <!-- home -->
-                </li>
-            
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explorar+</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Serviços</a> <!-- servico -->
-                        <a class="dropdown-item" href="#">Perguntas Frequentes</a>  <!-- perguntas-frequentes -->
-                        <a class="dropdown-item" href="#">Nosso time</a>  <!-- empresa/sobre -->
-                        <a class="dropdown-item" href="#simulador">Simulador</a>
-                        <a class="dropdown-item" href="#">Política de privacidade</a>  <!-- politica-privacidade -->
-                        <a class="dropdown-item" href="#">Página 404</a>  <!-- ## -->
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sobre Nós</a> <!-- empresa/sobre -->
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="#portifolio">Portfólio</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a> <!-- blog -->
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="# ">Contatos</a> <!-- contato -->
-                </li>
-            </ul>
-        </div>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Sobre Nós</a> <!-- empresa/sobre -->
+        </li>
         
-        <div class="col d-flex justify-content-start">
-            <!-- Botão para acionar modal -->
-            @guest <!-- Se ninguém estiver logado, mostre o botão de login -->
-                <button onclick="abrirModal()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
-                    Login
-                </button>
-            @endguest
+        <li class="nav-item">
+            <a class="nav-link" href="#portifolio">Portfólio</a>
+        </li>
 
-            @auth <!-- Se alguém estiver logado, mostre o botão de logout -->
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-danger">Sair</button>
-                </form>
-            @endauth
-        </div>
-    </div>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('blog.index') }}">Blog</a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('empresa.contato') }} ">Contatos</a>
+        </li>
+    </ul>
+
+    <!-- Botão para acionar modal -->
+    @guest <!-- Se ninguém estiver logado, mostre o botão de login -->
+        <button onclick="abrirModal()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+            Login
+        </button>
+    @endguest
+
+    @auth <!-- Se alguém estiver logado, mostre o botão de logout -->
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-danger">Sair</button>
+        </form>
+    @endauth
 
     <!-- Modal de Login -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -147,3 +139,4 @@
             </div>
         </div>
     </div>
+@endsection
