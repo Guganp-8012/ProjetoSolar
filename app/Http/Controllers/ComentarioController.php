@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comentario;
+use App\Models\Postagem;
 use Illuminate\Http\Request;
 
 class ComentarioController extends Controller
@@ -26,17 +27,30 @@ class ComentarioController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Postagem $postagem)
     {
-        //
+        $request->validate([
+            'conteudo' => 'required|string',
+        ]);
+
+        $comentario = new Comentario();
+        $comentario->conteudo = $request->conteudo;
+        $comentario->user_id = auth()->user()->id;
+        $comentario->postagem_id = $postagem->id;
+        $comentario->save();
+
+        return redirect()->route('comentario.store', ['postagem' => $postagem->id]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Comentario $comentario)
+    public function show($id)
     {
-        //
+        $postagem = Postagem::find($id);
+        $comentarios = Comentario::where('postagem_id', $id)->get();
+    
+        return view('blog.postagem-detalhes', compact('postagem', 'comentarios', 'id'));
     }
 
     /**

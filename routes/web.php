@@ -17,7 +17,8 @@ Route::get('/politica-de-privacidade', function () {return view('politica-privac
 Route::get('/faqs', [ContateNosController::class, 'index'])->name('FAQ.index');
 
 Route::get('/blog', [PostagemController::class, 'index'])->name('blog.index');
-Route::get('/blog/{id}', [PostagemController::class, 'show'])->name('blog.postagem-detalhes');
+Route::get('/blog/{id}', [PostagemController::class, 'show'])->name('blog.detalhes');
+//Route::post('/blog/{postagem}/comentario', [ComentarioController::class, 'store'])->name('comentario.store'); ->temporario/ajeitar
 
 Route::get('/servico', [ServicoController::class, 'index'])->name('servico.index');
 

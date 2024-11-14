@@ -62,7 +62,7 @@ class PostagemController extends Controller
     {
         $postagem = Postagem::with('user', 'categoria')->find($id);
 
-        return view('postagem-detalhes', compact('postagem'));
+        return view('blog.postagem-detalhes', compact('postagem'));
     }
 
     /**
