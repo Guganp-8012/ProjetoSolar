@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empresa;
+use App\Models\ContateNos;
 use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
@@ -12,7 +13,10 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        //
+        $empresa = Empresa::first();
+        $contate = ContateNos::first();
+
+        return view('empresa.contato', compact('empresa', 'contate'));
     }
 
     /**
@@ -28,7 +32,27 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'razao_social' => 'required',
+            'logo' => 'nullable|file|mimes:jpg,png,jpeg|max:2048',
+            'email' => 'required|email',
+            'telefone' => 'required|string|max:20',
+            'endereco' => 'required|string',
+            'descricao' => 'required|string|max:255',
+        ]);
+
+        $foto_camimho = $request->file('logo')->store('fotos', 'public');
+
+        $postagem = Empresa::create([
+            'razao_social' => $request->razao_social,
+            'logo' => $foto_camimho,
+            'email' => $request->email,
+            'telefone' => $request->telefone,
+            'endereco' => $request->endereco,
+            'descricao' => $request->descricao,
+        ]);
+
+        return redirect()->route('empresa.contato');
     }
 
     /**

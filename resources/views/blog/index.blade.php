@@ -5,6 +5,7 @@
 @section('title', 'Blog')
 
 @section('content')
+    <h1>Blog</h1>
     <div class="d-flex flex-wrap" style="gap: 45px;">
         @foreach($postagens as $postagem)
             <a href="{{ route('blog.detalhes', $postagem->id) }}" style="text-decoration: none;">

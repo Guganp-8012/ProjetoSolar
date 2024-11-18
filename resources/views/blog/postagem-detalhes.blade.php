@@ -27,7 +27,7 @@
             </div>
         @endforeach
     @else
-        <p>Ainda não há comentários nessa postagem.</p>
+        <p>Ainda não há comentários nesta postagem</p>
     @endif
 
     <!-- Formulário de Comentário -->
@@ -42,7 +42,7 @@
                 <button type="submit" class="btn btn-primary">Comentar</button>
             </form>
         @else
-            <h4>Por favor, <a href="{{ route('login') }}">faça login</a> para comentar.</h4>  
+            <h4>Por favor, <a href="#" data-toggle="modal" data-target="#loginModal">faça login</a> para comentar</h4>  
         @endauth
     </div>
 @endsection

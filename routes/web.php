@@ -18,12 +18,13 @@ Route::get('/faqs', [ContateNosController::class, 'index'])->name('FAQ.index');
 
 Route::get('/blog', [PostagemController::class, 'index'])->name('blog.index');
 Route::get('/blog/{id}', [PostagemController::class, 'show'])->name('blog.detalhes');
-//Route::post('/blog/{postagem}/comentario', [ComentarioController::class, 'store'])->name('comentario.store'); ->temporario/ajeitar
+Route::get('/blog/{postagem}/comentario', [ComentarioController::class, 'store'])->name('comentario.store');
 
 Route::get('/servico', [ServicoController::class, 'index'])->name('servico.index');
 
 Route::get('/sobre', [EmpresaController::class, 'index'])->name('empresa.sobre');
 Route::get('/contatos', [EmpresaController::class, 'index'])->name('empresa.contato');
+Route::post('/contatos', [ContateNosController::class, 'store'])->name('contate.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,7 +37,7 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('laravel.dashboard');
+    return view('laravel.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';

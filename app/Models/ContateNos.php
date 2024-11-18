@@ -9,15 +9,10 @@ class ContateNos extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['mensagem', 'empresa_id', 'user_id'];
+    protected $fillable = ['nome', 'email', 'mensagem', 'empresa_id'];
 
     public function empresa()
     {
         return $this->belongsTo(Empresa::class);
-    }
-    
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 }

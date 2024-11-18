@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContateNos;
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 
 class ContateNosController extends Controller
@@ -28,7 +29,21 @@ class ContateNosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'email' => 'required|email',
+            'mensagem' => 'required|string',
+            'empresa_id' => 'required|integer',
+        ]);
+
+        $contate = new ContateNos();
+        $contate->nome = $request->nome;
+        $contate->email = $request->email;
+        $contate->mensagem = $request->mensagem;
+        $contate->empresa_id = $request->empresa_id;
+        $contate->save();
+
+        return redirect()->route('empresa.contato');
     }
 
     /**

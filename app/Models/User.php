@@ -25,12 +25,6 @@ class User extends Authenticatable
         return $this->hasOne(Depoimento::class);
     }
     
-    // Relacionamento 1:N com ContateNos
-    public function contateNos()
-    {
-        return $this->hasMany(ContateNos::class);
-    }
-
     // Relacionamento 1:N com Comentario
     public function comentario()
     {
