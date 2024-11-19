@@ -18,7 +18,7 @@ Route::get('/faqs', [ContateNosController::class, 'index'])->name('FAQ.index');
 
 Route::get('/blog', [PostagemController::class, 'index'])->name('blog.index');
 Route::get('/blog/{id}', [PostagemController::class, 'show'])->name('blog.detalhes');
-Route::get('/blog/{postagem}/comentario', [ComentarioController::class, 'store'])->name('comentario.store');
+Route::post('/blog/{postagem}/comentario', [ComentarioController::class, 'store'])->name('comentario.store');
 
 Route::get('/servico', [ServicoController::class, 'index'])->name('servico.index');
 
@@ -30,6 +30,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    /*
+    Route::get('comentarios/{comentario}/edit', [ComentarioController::class, 'edit'])->name('comentarios.edit');
+    Route::put('comentarios/{comentario}', [ComentarioController::class, 'update'])->name('comentarios.update');
+    Route::delete('comentarios/{comentario}', [ComentarioController::class, 'destroy'])->name('comentarios.destroy');
+    */
 });
 
 Route::get('/welcome', function () {

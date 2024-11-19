@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Postagem;
 use App\Models\User;
 use App\Models\Categoria;
+use App\Models\Comentario;
 use Illuminate\Http\Request;
 
 class PostagemController extends Controller
@@ -52,7 +53,7 @@ class PostagemController extends Controller
             'data' => $request->data,
         ]);
 
-        return redirect()->route('blog.index');
+        return redirect()->route('blog.detalhes', ['id' => $postagem->id]); 
     }
 
     /**
@@ -60,7 +61,7 @@ class PostagemController extends Controller
      */
     public function show($id)
     {
-        $postagem = Postagem::with('user', 'categoria')->find($id);
+        $postagem = Postagem::with('user', 'categoria', 'comentarios.user')->find($id);
 
         return view('blog.postagem-detalhes', compact('postagem'));
     }

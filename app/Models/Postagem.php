@@ -21,7 +21,7 @@ class Postagem extends Model
         return $this->belongsTo(Categoria::class);
     }
 
-    public function comentario()
+    public function comentarios()
     {
         return $this->hasMany(Comentario::class);
     }

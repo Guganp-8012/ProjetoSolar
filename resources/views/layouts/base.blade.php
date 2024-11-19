@@ -28,7 +28,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">Sobre Nós</a> <!-- empresa/sobre -->
+                <a class="nav-link" href="{{ route('empresa.sobre') }}">Sobre Nós</a>
             </li>
             
             <li class="nav-item">
@@ -49,14 +49,16 @@
                     Login
                 </button>
             @endguest
-        </ul>
 
-        @auth <!-- Se alguém estiver logado, mostra o botão de sair -->
+            @auth <!-- Se alguém estiver logado, mostra o botão de sair -->
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-danger">Sair</button>
             </form>
         @endauth
+        </ul>
+
+        <hr>
 
         <!-- Modal de Login -->
         <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -91,7 +93,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Modal de Cadastro -->
         <div class="modal fade" id="cadastroModal" tabindex="-1" role="dialog" aria-labelledby="cadastroModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

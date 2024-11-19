@@ -33,13 +33,13 @@ class ComentarioController extends Controller
             'conteudo' => 'required|string',
         ]);
 
-        $comentario = new Comentario();
-        $comentario->conteudo = $request->conteudo;
-        $comentario->user_id = auth()->user()->id;
-        $comentario->postagem_id = $postagem->id;
-        $comentario->save();
+        Comentario::create([
+            'conteudo' => $request->conteudo,
+            'user_id' => auth()->user()->id,
+            'postagem_id' => $postagem->id,
+        ]);        
 
-        return redirect()->route('comentario.store', ['postagem' => $postagem->id]);
+        return redirect()->route('blog.detalhes', $postagem->id);
     }
 
     /**
@@ -47,10 +47,9 @@ class ComentarioController extends Controller
      */
     public function show($id)
     {
-        $postagem = Postagem::find($id);
-        $comentarios = Comentario::where('postagem_id', $id)->get();
+        $postagem = Postagem::with('comentario')->find($id);
     
-        return view('blog.postagem-detalhes', compact('postagem', 'comentarios', 'id'));
+        return view('blog.postagem-detalhes', compact('postagem'));
     }
 
     /**

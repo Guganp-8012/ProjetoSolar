@@ -18,17 +18,27 @@
     
     <!-- Exibindo Comentários -->
     <h3>Comentários</h3>
-    @if($postagem->comentarios && $postagem->comentarios->count() > 0)
+    @if($postagem->comentarios->count() > 0)
         @foreach($postagem->comentarios as $comentario)
-            <div>
-                <p>{{ $comentario->user->name }} comentou:</p>
-                <p>{{ $comentario->conteudo }}</p>
-                <small>{{ $comentario->created_at }}</small>
+            <div class="card">
+                <div class="d-flex card-header justify-content-between">
+                    <div>
+                        <img src="{{ $comentario->user->foto }}" alt="foto do usuario">
+                        <span>{{ $comentario->user->name }}</span>
+                    </div>
+
+                    <span>{{ $comentario->created_at->format('d/m/Y H:i') }}</span>
+                </div>
+                <div class="card-body">
+                    <p>{{ $comentario->conteudo }}</p>
+                </div>
             </div>
         @endforeach
     @else
         <p>Ainda não há comentários nesta postagem</p>
     @endif
+    
+    <hr>
 
     <!-- Formulário de Comentário -->
     <div>
