@@ -13,7 +13,10 @@ class ContateNosController extends Controller
      */
     public function index()
     {
-        //
+        $empresa = Empresa::find(1);
+        $contate = ContateNos::find(1);
+
+        return view('empresa.contato', compact('empresa', 'contate'));
     }
 
     /**
@@ -35,14 +38,14 @@ class ContateNosController extends Controller
             'mensagem' => 'required|string',
             'empresa_id' => 'required|integer',
         ]);
-
-        $contate = new ContateNos();
-        $contate->nome = $request->nome;
-        $contate->email = $request->email;
-        $contate->mensagem = $request->mensagem;
-        $contate->empresa_id = $request->empresa_id;
-        $contate->save();
-
+    
+        ContateNos::create([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'mensagem' => $request->mensagem,
+            'empresa_id' => $request->empresa_id,
+        ]);
+    
         return redirect()->route('empresa.contato');
     }
 

@@ -23,7 +23,8 @@ Route::post('/blog/{postagem}/comentario', [ComentarioController::class, 'store'
 Route::get('/servico', [ServicoController::class, 'index'])->name('servico.index');
 
 Route::get('/sobre', [EmpresaController::class, 'index'])->name('empresa.sobre');
-Route::get('/contatos', [EmpresaController::class, 'index'])->name('empresa.contato');
+
+Route::get('/contatos', [ContateNosController::class, 'index'])->name('empresa.contato');
 Route::post('/contatos', [ContateNosController::class, 'store'])->name('contate.store');
 
 Route::middleware('auth')->group(function () {

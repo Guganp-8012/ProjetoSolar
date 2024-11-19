@@ -13,10 +13,7 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        $empresa = Empresa::first();
-        $contate = ContateNos::first();
-
-        return view('empresa.contato', compact('empresa', 'contate'));
+        return view('empresa.sobre');
     }
 
     /**
