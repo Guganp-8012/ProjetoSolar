@@ -27,7 +27,20 @@
                         <span>{{ $comentario->user->name }}</span>
                     </div>
 
-                    <span>{{ $comentario->created_at->format('d/m/Y H:i') }}</span>
+                    <div>
+                        <span>{{ $comentario->created_at->format('d/m/Y H:i') }}</span>
+
+                        @auth
+                            <!-- Botão de Editar -->
+                            <button class="btn btn-primary editar-comentario" data-id="{{ $comentario->id }}" data-conteudo="{{ $comentario->conteudo }}" data-toggle="modal" data-target="#editarComentarioModal">Editar</button>
+
+                            <form action="{{ route('comentario.destroy', $comentario->id) }}" method="POST" style="display:inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            </form>
+                        @endauth
+                    </div>
                 </div>
                 <div class="card-body">
                     <p>{{ $comentario->conteudo }}</p>
@@ -37,22 +50,55 @@
     @else
         <p>Ainda não há comentários nesta postagem</p>
     @endif
-    
+
+    <!-- Modal de Edição -->
+    <div class="modal fade" id="editarComentarioModal" tabindex="-1" aria-labelledby="editarComentarioModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editarComentarioModalLabel">Editar Comentário</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <!-- Formulário Edição de Comentário -->
+                <form id="editar-comentario-form" action="{{ route('comentario.update', $comentario->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="conteudo">Comentário:</label>
+                            <textarea name="conteudo" id="conteudo" class="form-control" placeholder="Digite seu comentário" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary" onclick="document.getElementById('editar-comentario-form').submit()">Atualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <hr>
 
     <!-- Formulário de Comentário -->
     <div>
         @auth
-            <form action="{{ route('comentario.store', ['postagem' => $postagem->id]) }}" method="POST">
+            <form id="comentario-form" action="{{ route('comentario.store', ['postagem' => $postagem->id]) }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="conteudo">Comentário:</label>
-                    <textarea name="conteudo" id="conteudo" class="form-control" required></textarea>
+                    <textarea name="conteudo" id="conteudo" class="form-control" placeholder="Digite seu comentário" required></textarea>
                 </div>
+
                 <button type="submit" class="btn btn-primary">Comentar</button>
             </form>
-        @else
-            <h4>Por favor, <a href="#" data-toggle="modal" data-target="#loginModal">faça login</a> para comentar</h4>  
         @endauth
+
+        @guest
+            <h4>Por favor, <a href="#" data-toggle="modal" data-target="#loginModal">faça login</a> para comentar</h4>  
+        @endguest
     </div>
 @endsection

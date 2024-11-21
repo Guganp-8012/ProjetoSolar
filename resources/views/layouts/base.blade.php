@@ -51,11 +51,11 @@
             @endguest
 
             @auth <!-- Se alguém estiver logado, mostra o botão de sair -->
-            <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                <button type="submit" class="btn btn-danger">Sair</button>
-            </form>
-        @endauth
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Sair</button>
+                </form>
+            @endauth
         </ul>
 
         <hr>

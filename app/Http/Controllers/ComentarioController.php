@@ -55,24 +55,32 @@ class ComentarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Comentario $comentario)
+    public function edit($id)
     {
-        //
+        $comentario = Comentario::find($id);
+
+        return view('comentario.edit', ['comentario' => $comentario]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comentario $comentario)
+    public function update(Request $request, $id)
     {
-        //
+        $comentario = Comentario::find($id);
+        $comentario->update($request->all());
+
+        return redirect()->route('blog.detalhes', $comentario->postagem_id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Comentario $comentario)
+    public function destroy($id)
     {
-        //
+        $comentario = Comentario::find($id);
+        $comentario->delete();
+
+        return redirect()->route('blog.detalhes', $comentario->postagem_id);
     }
 }

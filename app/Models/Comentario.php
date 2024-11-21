@@ -11,11 +11,13 @@ class Comentario extends Model
 
     protected $fillable = ['conteudo', 'user_id', 'postagem_id'];
 
+    // Relacionamento N:1 com User
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    // Relacionamento N:1 com Postagem
     public function postagem()
     {
         return $this->belongsTo(Postagem::class);
