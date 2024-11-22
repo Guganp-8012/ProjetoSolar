@@ -11,6 +11,7 @@ class ContateNos extends Model
 
     protected $fillable = ['nome', 'email', 'mensagem', 'empresa_id'];
 
+    // Relacionamento N:1 com Empresa
     public function empresa()
     {
         return $this->belongsTo(Empresa::class);

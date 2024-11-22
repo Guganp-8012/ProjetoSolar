@@ -36,14 +36,13 @@ class ContateNosController extends Controller
             'nome' => 'required|string|max:255',
             'email' => 'required|email',
             'mensagem' => 'required|string',
-            'empresa_id' => 'required|integer',
         ]);
     
         ContateNos::create([
             'nome' => $request->nome,
             'email' => $request->email,
             'mensagem' => $request->mensagem,
-            'empresa_id' => $request->empresa_id,
+            'empresa_id' => 1,
         ]);
     
         return redirect()->route('empresa.contato');

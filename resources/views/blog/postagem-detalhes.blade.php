@@ -23,7 +23,7 @@
             <div class="card">
                 <div class="d-flex card-header justify-content-between">
                     <div>
-                        <img src="{{ $comentario->user->foto }}" alt="foto do usuario">
+                        <img src="{{ $comentario->user->foto }}" alt="foto_do_usuario">
                         <span>{{ $comentario->user->name }}</span>
                     </div>
 
@@ -34,6 +34,7 @@
                             <!-- Botão de Editar -->
                             <button class="btn btn-primary editar-comentario" data-id="{{ $comentario->id }}" data-conteudo="{{ $comentario->conteudo }}" data-toggle="modal" data-target="#editarComentarioModal">Editar</button>
 
+                            <!-- Botão de Excluir -->
                             <form action="{{ route('comentario.destroy', $comentario->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
@@ -73,7 +74,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button> <!-- ajeitar -->
                         <button type="submit" class="btn btn-primary" onclick="document.getElementById('editar-comentario-form').submit()">Atualizar</button>
                     </div>
                 </form>
@@ -98,7 +99,7 @@
         @endauth
 
         @guest
-            <h4>Por favor, <a href="#" data-toggle="modal" data-target="#loginModal">faça login</a> para comentar</h4>  
+            <h4>Faça <a href="#" data-toggle="modal" data-target="#loginModal">login</a> para comentar.</h4>  
         @endguest
     </div>
 @endsection

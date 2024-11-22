@@ -9,18 +9,9 @@ class Servico extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tipo_servico', 'descricao', 'solicitacao_servico_id', 'user_id', 'empresa_id'];
+    protected $fillable = ['tipo_servico', 'descricao', 'empresa_id'];
 
-    public function solicitacaoServico()
-    {
-        return $this->belongsTo(SolicitacaoServico::class);
-    }
-    
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
+    // Relacionamento N:1 com Empresa
     public function empresa()
     {
         return $this->belongsTo(Empresa::class);

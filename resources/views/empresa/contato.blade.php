@@ -21,7 +21,6 @@
     <div>
         <form action="{{ route('contate.store') }}" method="POST">
             @csrf
-            <input type="hidden" name="empresa_id" value="{{ $empresa->id }}"> <!-- Passa o empresa_id para o formulário -->
             <div class="form-group">
                 <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome *" required>
                 <input type="email" class="form-control" id="email" name="email" placeholder="E-mail *" required>

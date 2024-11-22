@@ -37,7 +37,7 @@ class ComentarioController extends Controller
             'conteudo' => $request->conteudo,
             'user_id' => auth()->user()->id,
             'postagem_id' => $postagem->id,
-        ]);        
+        ]);
 
         return redirect()->route('blog.detalhes', $postagem->id);
     }
