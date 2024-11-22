@@ -10,7 +10,7 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\PostagemController;
 use App\Http\Controllers\ServicoController;
 
-Route::get('/', function () {return view('homepage');})->name('homepage');
+Route::get('/', [DepoimentoController::class, 'index'])->name('homepage');
 
 Route::get('/politica-de-privacidade', function () {return view('politica-privacidade.index');})->name('politica-privacidade.index');
 
@@ -31,8 +31,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::post('/blog/{postagem}/comentario', [ComentarioController::class, 'store'])->name('comentario.store');
-    
+    Route::post('/depoimentos', [DepoimentoController::class, 'store'])->name('depoimento.store');
+    Route::get('/depoimentos/{id}/edit', [DepoimentoController::class, 'edit'])->name('depoimento.edit');
+    Route::put('/depoimentos/{id}', [DepoimentoController::class, 'update'])->name('depoimento.update');
+    Route::delete('/depoimentos/{id}', [DepoimentoController::class, 'destroy'])->name('depoimento.destroy');
+
+    Route::post('/blog/{postagem}/comentarios', [ComentarioController::class, 'store'])->name('comentario.store');
     Route::get('/comentarios/{comentario}/edit', [ComentarioController::class, 'edit'])->name('comentario.edit');
     Route::put('/comentarios/{comentario}', [ComentarioController::class, 'update'])->name('comentario.update');
     Route::delete('/comentarios/{comentario}', [ComentarioController::class, 'destroy'])->name('comentario.destroy');
