@@ -88,4 +88,12 @@ class DepoimentoController extends Controller
 
         return redirect()->route('homepage');
     }
+
+    public function servico()
+    {
+    $empresa = Empresa::find(1);
+    $depoimentos = Depoimento::with('user')->get();
+
+    return view('servico.index', compact('empresa', 'depoimentos'));
+    }
 }
