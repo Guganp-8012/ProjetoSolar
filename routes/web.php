@@ -10,6 +10,8 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\PostagemController;
 use App\Http\Controllers\UserController;
 
+//organizar rotas de blog / categoria
+
 Route::get('/', [DepoimentoController::class, 'index'])->name('homepage');
 
 Route::get('/politica-de-privacidade', function () {return view('politica-privacidade.index');})->name('politica-privacidade.index');
@@ -19,7 +21,11 @@ Route::get('/faqs', [ContateNosController::class, 'index'])->name('FAQ.index');
 Route::get('/blog', [PostagemController::class, 'index'])->name('blog.index');
 Route::get('/blog/{id}', [PostagemController::class, 'show'])->name('blog.detalhes');
 
+Route::get('/categoria', [CategoriaController::class, 'index'])->name('categoria.index'); // id -> metodo show?
+
 Route::get('/sobre', [UserController::class, 'index'])->name('empresa.sobre');
+
+Route::get('/servicos', [DepoimentoController::class, 'servico'])->name('servico.index');
 
 Route::get('/contatos', [ContateNosController::class, 'index'])->name('empresa.contato');
 Route::post('/contatos', [ContateNosController::class, 'store'])->name('contate.store');
@@ -33,6 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/depoimentos/{id}/edit', [DepoimentoController::class, 'edit'])->name('depoimento.edit');
     Route::put('/depoimentos/{id}', [DepoimentoController::class, 'update'])->name('depoimento.update');
     Route::delete('/depoimentos/{id}', [DepoimentoController::class, 'destroy'])->name('depoimento.destroy');
+
+    Route::get('/blog/cadastrar', [PostagemController::class, 'create'])->name('blog.create');
+    Route::post('/blog', [PostagemController::class, 'store'])->name('blog.store');
 
     Route::post('/blog/{postagem}/comentarios', [ComentarioController::class, 'store'])->name('comentario.store');
     Route::get('/comentarios/{comentario}/edit', [ComentarioController::class, 'edit'])->name('comentario.edit');

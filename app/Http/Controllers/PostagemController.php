@@ -25,7 +25,7 @@ class PostagemController extends Controller
      */
     public function create()
     {
-        //
+        return view('blog.postagem-create');
     }
 
     /**
@@ -69,9 +69,10 @@ class PostagemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Postagem $postagem)
+    public function edit($id)
     {
-        //
+        $postagem = Postagem::find($id);
+        return view('blog.edit', ['postagem' => $postagem]);
     }
 
     /**
@@ -85,8 +86,10 @@ class PostagemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Postagem $postagem)
+    public function destroy($id)
     {
-        //
+        $postagem = Postagem::find($id);
+        $postagem->delete();
+        return redirect()->route('blog.index');
     }
 }

@@ -18,7 +18,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explorar+</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#servicos">Serviços</a>
+                    <a class="dropdown-item" href="{{ route('servico.index') }}">Serviços</a>
                     <a class="dropdown-item" href="{{ route('empresa.sobre') }}">Nosso time</a>
                     <a class="dropdown-item" href="#simulador">Simulador</a>
                     <a class="dropdown-item" href="{{ route('FAQ.index') }}">Perguntas Frequentes</a>
