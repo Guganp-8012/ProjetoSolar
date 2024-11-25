@@ -22,10 +22,4 @@ class Empresa extends Model
     {
         return $this->hasMany(ContateNos::class);
     }
-    
-    // Relacionamento 1:N com Servico
-    public function servico()
-    {
-        return $this->hasMany(Servico::class);
-    }
 }

@@ -8,7 +8,7 @@ use App\Http\Controllers\ContateNosController;
 use App\Http\Controllers\DepoimentoController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\PostagemController;
-use App\Http\Controllers\ServicoController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', [DepoimentoController::class, 'index'])->name('homepage');
 
@@ -19,9 +19,7 @@ Route::get('/faqs', [ContateNosController::class, 'index'])->name('FAQ.index');
 Route::get('/blog', [PostagemController::class, 'index'])->name('blog.index');
 Route::get('/blog/{id}', [PostagemController::class, 'show'])->name('blog.detalhes');
 
-Route::get('/servico', [ServicoController::class, 'index'])->name('servico.index');
-
-Route::get('/sobre', [EmpresaController::class, 'index'])->name('empresa.sobre');
+Route::get('/sobre', [UserController::class, 'index'])->name('empresa.sobre');
 
 Route::get('/contatos', [ContateNosController::class, 'index'])->name('empresa.contato');
 Route::post('/contatos', [ContateNosController::class, 'store'])->name('contate.store');
