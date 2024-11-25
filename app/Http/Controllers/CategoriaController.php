@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+    
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 
@@ -12,7 +12,9 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        return view('categoria.index');
+        $categorias = Categoria::all();
+
+        return view('categoria.index', ['categorias' => $categorias]);
     }
 
     /**
@@ -20,7 +22,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('categoria.create');
     }
 
     /**
@@ -28,7 +30,14 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome' => 'required|string',
+            'descricao' => 'required|string',
+        ]);
+
+        Categoria::create($request->all());
+
+        return redirect()->route('categoria.index');
     }
 
     /**
@@ -42,24 +51,32 @@ class CategoriaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Categoria $categoria)
+    public function edit($id)
     {
-        //
+        $categoria = Categoria::find($id);
+        return view('categoria.edit', ['categoria' => $categoria]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Categoria $categoria)
+    public function update(Request $request, $id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->update($request->all());
+
+        return redirect()->route('categoria.index');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categoria $categoria)
+    public function destroy($id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->delete();
+        return redirect()->route('categoria.index');
+
     }
 }
