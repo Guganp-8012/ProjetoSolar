@@ -19,7 +19,6 @@ Route::get('/politica-de-privacidade', function () {return view('politica-privac
 Route::get('/faqs', [ContateNosController::class, 'index'])->name('FAQ.index');
 
 Route::get('/blog', [PostagemController::class, 'index'])->name('blog.index');
-Route::get('/blog/{id}', [PostagemController::class, 'show'])->name('blog.detalhes');
 
 Route::get('/categoria', [CategoriaController::class, 'index'])->name('categoria.index'); // id -> metodo show?
 
@@ -43,11 +42,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/blog/cadastrar', [PostagemController::class, 'create'])->name('blog.create');
     Route::post('/blog', [PostagemController::class, 'store'])->name('blog.store');
 
+    // rever e organizar rotas de comentarios
+
     Route::post('/blog/{postagem}/comentarios', [ComentarioController::class, 'store'])->name('comentario.store');
     Route::get('/comentarios/{comentario}/edit', [ComentarioController::class, 'edit'])->name('comentario.edit');
     Route::put('/comentarios/{comentario}', [ComentarioController::class, 'update'])->name('comentario.update');
     Route::delete('/comentarios/{comentario}', [ComentarioController::class, 'destroy'])->name('comentario.destroy');
 });
+
+Route::get('/blog/{id}', [PostagemController::class, 'show'])->name('blog.detalhes');
 
 Route::get('/welcome', function () {
     return view('welcome');

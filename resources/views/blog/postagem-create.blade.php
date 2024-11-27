@@ -14,8 +14,8 @@
         </div>
 
         <div class="form-group">
-            <label for="foto">Foto: </label>
-            <input type="file" name="foto" id="foto" class="form-control" accept="image/*">
+            <label for="foto">Foto</label>
+            <input type="file" class="form-control-file" id="foto" name="foto">
         </div>
 
         <div class="form-group">

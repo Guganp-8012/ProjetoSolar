@@ -36,11 +36,11 @@
                 </div>
         @endforeach
     </div>
-    <!--
+    
     @auth
         @if(auth()->user()->funcionario == true)
             <a href="{{ route('blog.create') }}" class="btn btn-primary">Criar Postagem</a>
         @endif
     @endauth  
-    //ajeitar -->
+    
 @endsection

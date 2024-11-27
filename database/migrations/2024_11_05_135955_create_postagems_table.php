@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('postagems', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('categoria_id');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('categoria_id')->nullable();
             $table->string('titulo');
             $table->string('foto')->nullable();
             $table->longText('conteudo');

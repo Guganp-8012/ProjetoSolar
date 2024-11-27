@@ -25,7 +25,10 @@ class PostagemController extends Controller
      */
     public function create()
     {
-        return view('blog.postagem-create');
+        $categorias = Categoria::all();
+        $users = User::all();
+
+        return view('blog.postagem-create', compact('categorias', 'users'));
     }
 
     /**
@@ -53,7 +56,7 @@ class PostagemController extends Controller
             'data' => $request->data,
         ]);
 
-        return redirect()->route('blog.detalhes', ['id' => $postagem->id]); 
+        return redirect()->route('blog.detalhes', ['id' => $postagem->id]);
     }
 
     /**

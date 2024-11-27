@@ -91,9 +91,9 @@ class DepoimentoController extends Controller
 
     public function servico()
     {
-    $empresa = Empresa::find(1);
-    $depoimentos = Depoimento::with('user')->get();
+        $empresa = Empresa::find(1);
+        $depoimentos = Depoimento::with('user')->get();
 
-    return view('servico.index', compact('empresa', 'depoimentos'));
+        return view('servico.index', compact('empresa', 'depoimentos'));
     }
 }

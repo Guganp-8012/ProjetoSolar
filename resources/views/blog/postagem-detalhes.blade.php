@@ -47,40 +47,40 @@
                     <p>{{ $comentario->conteudo }}</p>
                 </div>
             </div>
+
+            <!-- Modal de Edição -->
+            <div class="modal fade" id="editarComentarioModal" tabindex="-1" aria-labelledby="editarComentarioModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editarComentarioModalLabel">Editar Comentário</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <!-- Formulário Edição de Comentário -->
+                        <form id="editar-comentario-form" action="{{ route('comentario.update', $comentario->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="conteudo">Comentário:</label>
+                                    <textarea name="conteudo" id="conteudo" class="form-control" placeholder="Digite seu comentário" required></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button> <!-- ajeitar -->
+                                <button type="submit" class="btn btn-primary" onclick="document.getElementById('editar-comentario-form').submit()">Atualizar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         @endforeach
     @else
         <p>Ainda não há comentários nesta postagem</p>
     @endif
-
-    <!-- Modal de Edição -->
-    <div class="modal fade" id="editarComentarioModal" tabindex="-1" aria-labelledby="editarComentarioModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editarComentarioModalLabel">Editar Comentário</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <!-- Formulário Edição de Comentário -->
-                <form id="editar-comentario-form" action="{{ route('comentario.update', $comentario->id) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="conteudo">Comentário:</label>
-                            <textarea name="conteudo" id="conteudo" class="form-control" placeholder="Digite seu comentário" required></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button> <!-- ajeitar -->
-                        <button type="submit" class="btn btn-primary" onclick="document.getElementById('editar-comentario-form').submit()">Atualizar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
     <hr>
 

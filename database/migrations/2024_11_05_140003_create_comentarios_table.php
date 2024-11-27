@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('comentarios', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('postagem_id');
-            $table->date('data');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('postagem_id')->nullable();
             $table->text('conteudo');
             $table->foreign('user_id')
                 ->references('id')

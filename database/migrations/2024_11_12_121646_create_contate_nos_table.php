@@ -13,13 +13,10 @@ return new class extends Migration
     {
         Schema::create('contate_nos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('empresa_id');
+            $table->unsignedBigInteger('empresa_id')->nullable();
+            $table->string('nome');
+            $table->string('email');
             $table->text('mensagem');
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
             $table->foreign('empresa_id')
                 ->references('id')
                 ->on('empresas')

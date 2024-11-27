@@ -49,38 +49,38 @@
                     @endauth
                 </div>
             </div>
+            
+            <!-- Modal de Edição de Depoimento -->
+            <div class="modal fade" id="editarDepoimentoModal" tabindex="-1" aria-labelledby="editarDepoimentoModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editarDepoimentoModalLabel">Editar Depoimento</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <!-- Formulário de Edição do Depoimento -->
+                        <form id="editar-depoimento-form" action="{{ route('depoimento.update', $depoimento->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="texto">Depoimento:</label>
+                                    <textarea name="texto" id="texto" class="form-control" placeholder="Digite seu depoimento" required></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button> <!-- ajeitar -->
+                                <button type="submit" class="btn btn-primary" onclick="document.getElementById('editar-depoimento-form').submit()">Atualizar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         @endforeach
     @else
         <p>Nenhum depoimento disponível.</p>
     @endif
-
-    <!-- Modal de Edição de Depoimento -->
-    <div class="modal fade" id="editarDepoimentoModal" tabindex="-1" aria-labelledby="editarDepoimentoModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editarDepoimentoModalLabel">Editar Depoimento</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <!-- Formulário de Edição do Depoimento -->
-                <form id="editar-depoimento-form" action="{{ route('depoimento.update', $depoimento->id) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="texto">Depoimento:</label>
-                            <textarea name="texto" id="texto" class="form-control" placeholder="Digite seu depoimento" required></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button> <!-- ajeitar -->
-                        <button type="submit" class="btn btn-primary" onclick="document.getElementById('editar-depoimento-form').submit()">Atualizar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 @endsection
