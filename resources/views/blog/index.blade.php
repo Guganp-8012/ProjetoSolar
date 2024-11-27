@@ -31,8 +31,21 @@
                             @endif
                         </span>
                         <span>•</span>
-                        <!--<a href="{{ route('categoria.index') }}" style="text-decoration: none;">{{ $postagem->categoria->nome }}</a> //ajeitar -->
+                        <a href="{{ route('categoria.show', $postagem->categoria->id) }}" style="text-decoration: none;">
+                            {{ $postagem->categoria->nome }}
+                        </a>
                     </div>
+                    @auth
+                        @if(auth()->user()->funcionario == true)
+                            <a href="{{ route('blog.edit', $postagem->id)  }}" class="btn btn-secondary">Editar Postagem</a>
+
+                            <form action="{{ route('blog.destroy', $postagem->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            </form>
+                        @endif
+                    @endauth
                 </div>
         @endforeach
     </div>
@@ -40,7 +53,8 @@
     @auth
         @if(auth()->user()->funcionario == true)
             <a href="{{ route('blog.create') }}" class="btn btn-primary">Criar Postagem</a>
+            <a href="{{ route('categoria.create') }}" class="btn btn-primary">Criar Categoria</a>
         @endif
-    @endauth  
-    
+    @endauth
+
 @endsection

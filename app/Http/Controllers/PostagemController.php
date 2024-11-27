@@ -75,16 +75,42 @@ class PostagemController extends Controller
     public function edit($id)
     {
         $postagem = Postagem::find($id);
-        return view('blog.edit', ['postagem' => $postagem]);
+        $categorias = Categoria::all();
+        $users = User::all();
+
+        return view('blog.postagem-edit', compact('postagem', 'categorias', 'users'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Postagem $postagem)
+    public function update(Request $request, $id)
     {
-        //
+        $postagem = Postagem::find($id);
+
+        $request->validate([
+            'user_id' => 'required|integer',
+            'categoria_id' => 'required|integer',
+            'titulo' => 'required|string|max:255',
+            'foto' => 'nullable|file|mimes:jpg,png,jpeg|max:2048',
+            'conteudo' => 'required|string',
+            'data' => 'required|date',
+        ]);
+
+        $foto_camimho = $request->file('foto')->store('fotos', 'public');
+
+        $postagem->update([
+            'user_id' => $request->user_id,
+            'categoria_id' => $request->categoria_id,
+            'titulo' => $request->titulo,
+            'foto' => $foto_camimho,
+            'conteudo' => $request->conteudo,
+            'data' => $request->data,
+        ]);
+
+        return redirect()->route('blog.index');
     }
+
 
     /**
      * Remove the specified resource from storage.

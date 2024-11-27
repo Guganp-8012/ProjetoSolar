@@ -3,7 +3,7 @@
 @section('title', $postagem->titulo)
 
 @section('content')
-    <a href="{{ route('categoria.index') }}" style="text-decoration: none;">{{ $postagem->categoria->nome }}</a>
+    <a href="{{ route('categoria.show') }}" style="text-decoration: none;">{{ $postagem->categoria->nome }}</a>
     
     <h1>{{ $postagem->titulo }}</h1>
     
