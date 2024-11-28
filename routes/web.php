@@ -30,21 +30,22 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::post('/depoimentos', [DepoimentoController::class, 'store'])->name('depoimento.store');
-    Route::get('/depoimentos/{id}/edit', [DepoimentoController::class, 'edit'])->name('depoimento.edit');
-    Route::put('/depoimentos/{id}', [DepoimentoController::class, 'update'])->name('depoimento.update');
-    Route::delete('/depoimentos/{id}', [DepoimentoController::class, 'destroy'])->name('depoimento.destroy');
+    Route::post('/depoimento', [DepoimentoController::class, 'store'])->name('depoimento.store');
+    Route::get('/depoimento/{id}/edit', [DepoimentoController::class, 'edit'])->name('depoimento.edit');
+    Route::put('/depoimento/{id}', [DepoimentoController::class, 'update'])->name('depoimento.update');
+    Route::delete('/depoimento/{id}', [DepoimentoController::class, 'destroy'])->name('depoimento.destroy');
 
+    Route::get('/categoria', [CategoriaController::class, 'index'])->name('categoria.index');
     Route::get('/categoria/cadastrar', [CategoriaController::class, 'create'])->name('categoria.create');
     Route::post('/categoria', [CategoriaController::class, 'store'])->name('categoria.store');
     Route::get('/categoria/{id}/edit', [CategoriaController::class, 'edit'])->name('categoria.edit');
-    Route::get('/categoria/{id}/update', [CategoriaController::class, 'update'])->name('categoria.update');
+    Route::put('/categoria/{id}', [CategoriaController::class, 'update'])->name('categoria.update');
     Route::delete('/categoria/{id}', [CategoriaController::class, 'destroy'])->name('categoria.destroy');
 
     Route::get('/blog/cadastrar', [PostagemController::class, 'create'])->name('blog.create');
     Route::post('/blog', [PostagemController::class, 'store'])->name('blog.store');
     Route::get('/blog/{id}/edit', [PostagemController::class, 'edit'])->name('blog.edit');
-    Route::get('/blog/{id}/update', [PostagemController::class, 'update'])->name('blog.update');
+    Route::put('/blog/{id}', [PostagemController::class, 'update'])->name('blog.update');
     Route::delete('/blog/{id}', [PostagemController::class, 'destroy'])->name('blog.destroy');
 
     // rever e organizar rotas de comentarios

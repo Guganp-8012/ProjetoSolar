@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
     
 use App\Models\Categoria;
-use App\Models\postagens;
+use App\Models\Postagem;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -13,7 +13,9 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $categorias = Categoria::all();
+
+        return view('categoria.index', compact('categorias'));
     }
 
     /**
@@ -34,9 +36,9 @@ class CategoriaController extends Controller
             'descricao' => 'required|string',
         ]);
 
-        Categoria::create($request->all());
+        $categoria = Categoria::create($request->all());
 
-        return redirect()->route('blog.index');
+        return redirect()->route('categoria.show', $categoria->id);
     }
 
     /**
@@ -44,8 +46,8 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        $categoria = Categoria::with('postagens')->find($id);
-        $postagens = $categoria->postagens;
+        $categoria = Categoria::with('postagem')->find($id);
+        $postagens = $categoria->postagem;
 
         return view('categoria.show', compact('categoria', 'postagens'));
     }
@@ -68,8 +70,7 @@ class CategoriaController extends Controller
         $categoria = Categoria::find($id);
         $categoria->update($request->all());
 
-        return redirect()->route('blog.index');
-
+        return redirect()->route('categoria.index');
     }
 
     /**
@@ -80,6 +81,6 @@ class CategoriaController extends Controller
         $categoria = Categoria::find($id);
         $categoria->delete();
 
-        return redirect()->route('blog.index');
+        return redirect()->route('categoria.index');
     }
 }

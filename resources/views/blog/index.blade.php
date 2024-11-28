@@ -1,11 +1,17 @@
-<!--listagem de postagens e categorias, posts recentes-->
-
 @extends('layouts.base')
 
 @section('title', 'Blog')
 
 @section('content')
     <h1>Blog</h1>
+    
+    @auth
+        @if(auth()->user()->funcionario == true)
+            <a href="{{ route('blog.create') }}" class="btn btn-primary">Criar Postagem</a>
+            <a href="{{ route('categoria.index') }}" class="btn btn-primary">Ver Categorias</a>
+        @endif
+    @endauth
+
     <div class="d-flex flex-wrap" style="gap: 45px;">
         @foreach($postagens as $postagem)
             <a href="{{ route('blog.detalhes', $postagem->id) }}" style="text-decoration: none;">
@@ -23,38 +29,27 @@
                     </div>
 
                     <div class="card-footer text-muted">
-                        <span>
-                            @if($postagem->data)
-                                {{ date('d/m/Y', strtotime($postagem->data)) }}
-                            @else
-                                Data Indisponível
-                            @endif
-                        </span>
+                        <span>{{ date('d/m/Y', strtotime($postagem->data)) }}</span>
                         <span>•</span>
                         <a href="{{ route('categoria.show', $postagem->categoria->id) }}" style="text-decoration: none;">
                             {{ $postagem->categoria->nome }}
                         </a>
-                    </div>
-                    @auth
-                        @if(auth()->user()->funcionario == true)
-                            <a href="{{ route('blog.edit', $postagem->id)  }}" class="btn btn-secondary">Editar Postagem</a>
 
-                            <form action="{{ route('blog.destroy', $postagem->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Excluir</button>
-                            </form>
-                        @endif
-                    @endauth
+                        @auth
+                            @if(auth()->user()->funcionario == true)
+                                <div class="d-flex justify-content-around">
+                                    <a href="{{ route('blog.edit', $postagem->id)  }}" class="btn btn-secondary">Editar Postagem</a>
+
+                                    <form action="{{ route('blog.destroy', $postagem->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Excluir</button>
+                                    </form>
+                                </div>
+                            @endif
+                        @endauth
+                    </div>
                 </div>
         @endforeach
     </div>
-    
-    @auth
-        @if(auth()->user()->funcionario == true)
-            <a href="{{ route('blog.create') }}" class="btn btn-primary">Criar Postagem</a>
-            <a href="{{ route('categoria.create') }}" class="btn btn-primary">Criar Categoria</a>
-        @endif
-    @endauth
-
 @endsection
