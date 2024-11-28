@@ -12,7 +12,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('empresa.sobre');
+        //
     }
 
     /**
@@ -61,5 +61,12 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function funcionarios()
+    {
+        $users = User::all();
+        
+        return view('empresa.sobre', compact('users'));
     }
 }
