@@ -12,7 +12,7 @@ class Categoria extends Model
     protected $fillable = ['nome', 'descricao'];
 
     // Relacionamento 1:N com Postagem
-    public function postagem()
+    public function postagens()
     {
         return $this->hasMany(Postagem::class);
     }

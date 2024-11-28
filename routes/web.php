@@ -18,8 +18,6 @@ Route::get('/faqs', function () {return view('FAQ.index');})->name('FAQ.index');
 
 Route::get('/blog', [PostagemController::class, 'index'])->name('blog.index');
 
-Route::get('/categoria/{id}', [CategoriaController::class, 'show'])->name('categoria.show');
-
 Route::get('/sobre', [UserController::class, 'index'])->name('empresa.sobre');
 
 Route::get('/servicos', [DepoimentoController::class, 'servico'])->name('servico.index');
@@ -56,6 +54,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/comentarios/{comentario}', [ComentarioController::class, 'update'])->name('comentario.update');
     Route::delete('/comentarios/{comentario}', [ComentarioController::class, 'destroy'])->name('comentario.destroy');
 });
+
+Route::get('/categoria/{id}', [CategoriaController::class, 'show'])->name('categoria.show');
 
 Route::get('/blog/{id}', [PostagemController::class, 'show'])->name('blog.detalhes');
 
