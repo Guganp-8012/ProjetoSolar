@@ -45,13 +45,13 @@ class PostagemController extends Controller
             'data' => 'required|date',
         ]);
 
-        $foto_camimho = $request->file('foto')->store('fotos', 'public');
+        $foto_caminho = $request->file('foto')->store('fotos_postagem', 'public');
 
         $postagem = Postagem::create([
             'user_id' => $request->user_id,
             'categoria_id' => $request->categoria_id,
             'titulo' => $request->titulo,
-            'foto' => $foto_camimho,
+            'foto' => $foto_caminho,
             'conteudo' => $request->conteudo,
             'data' => $request->data,
         ]);
@@ -98,13 +98,13 @@ class PostagemController extends Controller
             'data' => 'required|date',
         ]);
 
-        $foto_camimho = $request->file('foto')->store('fotos', 'public');
+        $foto_caminho = $request->file('foto')->store('fotos_postagem', 'public');
 
         $postagem->update([
             'user_id' => $request->user_id,
             'categoria_id' => $request->categoria_id,
             'titulo' => $request->titulo,
-            'foto' => $foto_camimho,
+            'foto' => $foto_caminho,
             'conteudo' => $request->conteudo,
             'data' => $request->data,
         ]);
@@ -120,6 +120,7 @@ class PostagemController extends Controller
     {
         $postagem = Postagem::find($id);
         $postagem->delete();
+        
         return redirect()->route('blog.index');
     }
 }

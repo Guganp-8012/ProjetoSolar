@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('empresa_id')->nullable();
             $table->string('titulo');
             $table->string('descricao')->nullable();
-            $table->string('fotos')->nullable();
+            $table->string('foto')->nullable();
             $table->string('cidade');
             $table->float('potencia');
             $table->string('tipo');

@@ -38,11 +38,11 @@ class EmpresaController extends Controller
             'descricao' => 'required|string|max:255',
         ]);
 
-        $foto_camimho = $request->file('logo')->store('fotos', 'public');
+        $foto_caminho = $request->file('logo')->store('fotos_empresa', 'public');
 
         $postagem = Empresa::create([
             'razao_social' => $request->razao_social,
-            'logo' => $foto_camimho,
+            'logo' => $foto_caminho,
             'email' => $request->email,
             'telefone' => $request->telefone,
             'endereco' => $request->endereco,

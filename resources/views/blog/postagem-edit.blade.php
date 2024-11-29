@@ -11,7 +11,7 @@
         
         <div class="form-group">
             <label for="titulo">Título: </label>
-            <input type="text" name="titulo" id="titulo" value="{{ $postagem->titulo }}" required>
+            <input type="text" name="titulo" id="titulo" class="form-control" value="{{ $postagem->titulo }}" required>
         </div>
 
         <div class="form-group">
@@ -24,7 +24,7 @@
 
         <div class="form-group">
             <label for="conteudo">Conteúdo: </label>
-            <textarea name="conteudo" id="conteudo" required>{{ $postagem->conteudo }}</textarea>
+            <textarea name="conteudo" id="conteudo" class="form-control" required>{{ $postagem->conteudo }}</textarea>
         </div>
 
         <div class="form-group">

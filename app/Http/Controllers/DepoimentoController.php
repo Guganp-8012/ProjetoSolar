@@ -62,6 +62,7 @@ class DepoimentoController extends Controller
     public function edit($id)
     {
         $depoimento = Depoimento::find($id);
+        
         return view('depoimento.edit', ['depoimento' => $depoimento]);
     }
 

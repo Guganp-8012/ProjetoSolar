@@ -8,7 +8,7 @@
     @auth
         @if(auth()->user()->funcionario == true)
             <a href="{{ route('blog.create') }}" class="btn btn-primary">Criar Postagem</a>
-            <a href="{{ route('categoria.index') }}" class="btn btn-primary">Ver Categorias</a>
+            <a href="{{ route('categoria.index') }}" class="btn btn-secondary">Ver Categorias</a>
         @endif
     @endauth
 
@@ -34,6 +34,8 @@
                         <a href="{{ route('categoria.show', $postagem->categoria->id) }}" style="text-decoration: none;">
                             {{ $postagem->categoria->nome }}
                         </a>
+
+                        <hr>
 
                         @auth
                             @if(auth()->user()->funcionario == true)

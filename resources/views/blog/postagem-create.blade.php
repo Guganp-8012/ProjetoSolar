@@ -25,7 +25,7 @@
 
         <div class="form-group">
             <label for="data">Data: </label>
-            <input type="date" name="data" id="data" class="form-control" required>
+            <input type="date" name="data" id="data" required>
         </div>
 
         <div class="form-group">
