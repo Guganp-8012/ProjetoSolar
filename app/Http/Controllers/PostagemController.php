@@ -65,8 +65,9 @@ class PostagemController extends Controller
     public function show($id)
     {
         $postagem = Postagem::with('user', 'categoria', 'comentarios.user')->find($id);
+        $postsRecentes = Postagem::with('user')->get();
 
-        return view('blog.postagem-detalhes', compact('postagem'));
+        return view('blog.postagem-detalhes', compact('postagem', 'postsRecentes'));
     }
 
     /**

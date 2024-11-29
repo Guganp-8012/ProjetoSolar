@@ -17,6 +17,22 @@
         @endif
         <p>{{ $postagem->conteudo }}</p>
     </div>
+
+    <!-- Outras Postagens -->
+    <h3>Posts Recentes</h3>
+    
+    <div class="list-group">
+        @foreach($postsRecentes as $postRecente)
+            <a href="{{ route('blog.detalhes', $postRecente->id) }}" class="list-group-item list-group-item-action d-flex align-items-start">
+                <img src="{{ $postRecente->foto }}" alt="foto_do_post" class="img-thumbnail me-3" style="width: 64px; height: 64px; object-fit: cover;">
+                <div>
+                    <h5 class="mb-1">{{ $postRecente->titulo }}</h5>
+                    <small class="text-muted">{{ date('d/m/Y', strtotime($postagem->data)) }}</small>
+                </div>
+            </a>
+        @endforeach
+    </div>
+
     
     <!-- Exibindo Comentários -->
     <h3>Comentários</h3>
