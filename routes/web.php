@@ -17,14 +17,13 @@ Route::get('/politica-de-privacidade', function () {return view('politica-privac
 
 Route::get('/faqs', function () {return view('FAQ.index');})->name('FAQ.index');
 
-Route::get('/blog', [PostagemController::class, 'index'])->name('blog.index');
-
 Route::get('/sobre', [UserController::class, 'funcionarios'])->name('empresa.sobre');
 
 Route::get('/servicos', [DepoimentoController::class, 'servico'])->name('servico.index');
 
+Route::get('/blog', [PostagemController::class, 'index'])->name('blog.index');
+
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
-Route::get('/portfolio/{id}', [PortfolioController::class, 'show'])->name('portfolio.show');
 
 Route::get('/contatos', [ContateNosController::class, 'index'])->name('empresa.contato');
 Route::post('/contatos', [ContateNosController::class, 'store'])->name('contate.store');
@@ -58,6 +57,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/comentarios/{comentario}/edit', [ComentarioController::class, 'edit'])->name('comentario.edit');
     Route::put('/comentarios/{comentario}', [ComentarioController::class, 'update'])->name('comentario.update');
     Route::delete('/comentarios/{comentario}', [ComentarioController::class, 'destroy'])->name('comentario.destroy');
+
+
+    Route::get('/portfolio/cadastrar', [PortfolioController::class, 'create'])->name('portfolio.create');
+    Route::post('/portfolio', [PortfolioController::class, 'store'])->name('portfolio.store');
+    Route::get('/portfolio/{id}/edit', [PortfolioController::class, 'edit'])->name('portfolio.edit');
+    Route::put('/portfolio/{id}', [PortfolioController::class, 'update'])->name('portfolio.update');
+    Route::delete('/portfolio/{id}', [PortfolioController::class, 'destroy'])->name('portfolio.destroy');
 });
 
 Route::get('/categoria/{id}', [CategoriaController::class, 'show'])->name('categoria.show');
