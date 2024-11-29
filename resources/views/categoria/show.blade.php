@@ -3,7 +3,16 @@
 @section('title', 'Categoria: ' . $categoria->nome)
 
 @section('content')
-    <h1>Postagens da Categoria: {{ $categoria->nome }}</h1>
+    <h1>Postagens da categoria: {{ $categoria->nome }}</h1>
+
+    <p>{{ $categoria->descricao }}</p>
+
+    @auth
+        @if(auth()->user()->funcionario == true)
+            <a href="{{ route('blog.create') }}" class="btn btn-primary">Criar Postagem</a>
+            <a href="{{ route('categoria.edit', $categoria->id) }}" class="btn btn-secondary">Editar Categoria</a>
+        @endif
+    @endauth
 
     @if($postagens->count() > 0)
         <div class="d-flex flex-wrap" style="gap: 45px;">
@@ -31,8 +40,7 @@
     @else
         <p>Não há postagens nesta categoria.</p>
     @endif
-    <a href="{{ route('blog.create') }}" class="btn btn-primary">Criar Postagem</a>
-
+    
     <a href="{{ route('blog.index') }}">
         <button class="btn btn-secondary">Voltar</button>
     </a>

@@ -14,7 +14,7 @@ class PortfolioController extends Controller
     {
         $portfolios = Portfolio::all();
 
-        return view('portfolio.index', compact('portfolios'));
+        return view('portfolio.index', ['portfolios' => $portfolios]);
     }
 
     /**
@@ -22,7 +22,7 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        //
+        return view('portfolio.create');
     }
 
     /**
@@ -30,38 +30,81 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'descricao' => 'nullable|string|max:500',
+            'foto' => 'required|file|mimes:jpg,png,jpeg|max:2048',
+            'cidade' => 'required|string|max:255',
+            'potencia' => 'required|numeric',
+            'tipo' => 'required|string',
+            'economia' => 'required|numeric',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Request $request)
-    {
-        //
+        $foto_caminho = $request->file('foto')->store('fotos_portfolio', 'public');
+
+        Portfolio::create([
+            'titulo' => $request->titulo,
+            'descricao' => $request->descricao,
+            'foto' => $foto_caminho,
+            'cidade' => $request->cidade,
+            'potencia' => $request->potencia,
+            'tipo' => $request->tipo,
+            'economia' => $request->economia,
+        ]);
+
+        return redirect()->route('portfolio.index');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Portfolio $portfolio)
+    public function edit($id)
     {
-        //
+        $portfolio = Portfolio::find($id);
+
+        return view('portfolio.edit', ['portfolio' => $portfolio]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Portfolio $portfolio)
+    public function update(Request $request, $id)
     {
-        //
+        $portfolio = Portfolio::find($id);
+
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'descricao' => 'nullable|string|max:500',
+            'foto' => 'nullable|file|mimes:jpg,png,jpeg|max:2048',
+            'cidade' => 'required|string|max:255',
+            'potencia' => 'required|numeric',
+            'tipo' => 'required|string',
+            'economia' => 'required|numeric',
+        ]);
+
+        $foto_caminho = $request->file('foto')->store('fotos_portfolio', 'public');
+
+        $portfolio->update([
+            'titulo' => $request->titulo,
+            'descricao' => $request->descricao,
+            'foto' => $foto_caminho,
+            'cidade' => $request->cidade,
+            'potencia' => $request->potencia,
+            'tipo' => $request->tipo,
+            'economia' => $request->economia,
+        ]);
+
+        return redirect()->route('portfolio.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Portfolio $portfolio)
+    public function destroy($id)
     {
-        //
+        $portfolio = Portfolio::find($id);
+        $portfolio->delete();
+
+        return redirect()->route('portfolio.index');
     }
 }
