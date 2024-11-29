@@ -61,7 +61,7 @@ Route::get('/categoria/{id}', [CategoriaController::class, 'show'])->name('categ
 Route::get('/blog/{id}', [PostagemController::class, 'show'])->name('blog.detalhes');
 
 Route::get('/welcome', function () {
-    return view('welcome');
+    return view('laravel.welcome');
 });
 
 Route::get('/dashboard', function () {
