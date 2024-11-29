@@ -32,7 +32,7 @@
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="#portifolio">Portfólio</a>
+                <a class="nav-link" href="{{ route('portfolio.index') }}">Portfólio</a>
             </li>
 
             <li class="nav-item">
