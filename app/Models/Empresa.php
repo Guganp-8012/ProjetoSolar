@@ -22,4 +22,10 @@ class Empresa extends Model
     {
         return $this->hasMany(ContateNos::class);
     }
+
+    // Relacionamento 1:N com Portfolio
+    public function portfolio()
+    {
+        return $this->hasMany(Portfolio::class);
+    }
 }
