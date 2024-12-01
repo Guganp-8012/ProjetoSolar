@@ -16,7 +16,7 @@
                     
                     <div class="card-body">
                         <h5 class="card-title">{{ $user->name }}</h5>
-                        <!--<p class="card-text">{{ $user->ocupacao }}</p>-->
+                        <p class="card-text">{{ $user->ocupacao }}</p>
                     </div>
                 </div>
             @endif

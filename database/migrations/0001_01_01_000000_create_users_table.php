@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('foto')->nullable();
             $table->string('telefone')->nullable();
             $table->boolean('funcionario')->default(0);
+            $table->string('ocupacao')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
