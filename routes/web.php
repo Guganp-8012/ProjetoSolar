@@ -11,11 +11,13 @@ use App\Http\Controllers\PostagemController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\UserController;
 
-Route::get('/', [DepoimentoController::class, 'index'])->name('homepage');
+Route::get('/', [DepoimentoController::class, 'index'])->name('home');
 
 Route::get('/politica-de-privacidade', function () {return view('politica-privacidade.index');})->name('politica-privacidade.index');
 
 Route::get('/faqs', function () {return view('FAQ.index');})->name('FAQ.index');
+
+Route::get('/error404', function () {return view('error404');})->name('error404');
 
 Route::get('/sobre', [UserController::class, 'funcionarios'])->name('empresa.sobre');
 

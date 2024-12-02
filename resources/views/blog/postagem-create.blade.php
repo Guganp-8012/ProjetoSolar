@@ -9,27 +9,27 @@
         @csrf
 
         <div class="form-group">
-            <label for="titulo">Título: </label>
+            <label for="titulo">Título</label>
             <input type="text" name="titulo" id="titulo" class="form-control" required>
         </div>
 
         <div class="form-group">
-            <label for="foto">Foto</label>
+            <label for="foto">Foto:</label>
             <input type="file" class="form-control-file" id="foto" name="foto">
         </div>
 
         <div class="form-group">
-            <label for="conteudo">Conteúdo: </label>
+            <label for="conteudo">Conteúdo</label>
             <textarea name="conteudo" id="conteudo" class="form-control" required></textarea>
         </div>
 
         <div class="form-group">
-            <label for="data">Data: </label>
+            <label for="data">Data</label>
             <input type="date" name="data" id="data" required>
         </div>
 
         <div class="form-group">
-            <label for="categoria_id">Categoria: </label>
+            <label for="categoria_id">Categoria</label>
             <select name="categoria_id" id="categoria_id" class="form-control" required>
                 @foreach($categorias as $categoria)
                     <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
@@ -38,7 +38,7 @@
         </div>
 
         <div class="form-group">
-            <label for="user_id">Autor: </label>
+            <label for="user_id">Autor</label>
             <select name="user_id" id="user_id" class="form-control" required>
                 @foreach($users as $user)
                     <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -48,8 +48,6 @@
 
         <button type="submit" class="btn btn-primary">Criar Postagem</button>
     </form>
-
-    <a href="{{ route('blog.index') }}">
-        <button class="btn btn-secondary">Voltar</button>
-    </a>
+    <a href="{{ route('categoria.create') }}" class="btn btn-primary">Criar Categoria</a>
+    <a href="{{ route('blog.index') }}"><button class="btn btn-secondary">Voltar</button></a>
 @endsection

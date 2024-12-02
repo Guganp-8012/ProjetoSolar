@@ -9,12 +9,12 @@
         @csrf
 
         <div class="form-group">
-            <label for="nome">Nome: </label>
+            <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome" required>
         </div>
 
         <div class="form-group">
-            <label for="descricao">Descrição: </label>
+            <label for="descricao">Descrição</label>
             <textarea type="text" name="descricao" id="descricao" class="form-control" required></textarea>
         </div>
 

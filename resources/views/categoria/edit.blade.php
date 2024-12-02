@@ -10,12 +10,12 @@
         @method('PUT')
 
         <div class="form-group">
-            <label for="nome">Nome: </label>
+            <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome" value="{{ $categoria->nome }}" required>
         </div>
 
         <div class="form-group">
-            <label for="descricao">Descrição: </label>
+            <label for="descricao">Descrição</label>
             <textarea name="descricao" id="descricao" class="form-control" required>{{ $categoria->descricao }}</textarea>
         </div>
 

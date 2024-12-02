@@ -11,6 +11,13 @@
         @if(auth()->user()->funcionario == true)
             <a href="{{ route('blog.create') }}" class="btn btn-primary">Criar Postagem</a>
             <a href="{{ route('categoria.edit', $categoria->id) }}" class="btn btn-secondary">Editar Categoria</a>
+            <a href="{{ route('categoria.index') }}" class="btn btn-secondary">Ver Categorias</a>
+            <!-- Formulário de Exclusão -->
+            <form action="{{ route('categoria.destroy', $categoria->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Excluir Categoria</button>
+            </form>
         @endif
     @endauth
 

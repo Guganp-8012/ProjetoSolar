@@ -12,6 +12,16 @@
                     {{ __("Você está logado!") }}
                 </div>
             </div>
+            
+            <!-- Botão Voltar -->
+            <div class="flex justify-start mt-4">
+                <a href="{{ url()->previous() }}" class="inline-flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7M5 12h14"></path>
+                    </svg>
+                    Voltar
+                </a>
+            </div>
         </div>
     </div>
 </x-app-layout>

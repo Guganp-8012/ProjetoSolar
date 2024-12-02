@@ -14,7 +14,11 @@ class DepoimentoController extends Controller
      */
     public function index()
     {
-        $empresa = Empresa::find(1);
+        $empresa = Empresa::firstOrCreate(
+            ['id' => 1],
+            ['razao_social' => 'Empresa Padrão', 'logo' => null, 'email' => 'padrao@email.com',  'telefone' => '+55 (XX) XXXXX-XXXX', 'endereco' => 'Endereço Padrão', 'descricao' => 'Descrição Padrão'] // Dados padrão para criar se empresa não existir
+        );
+
         $depoimentos = Depoimento::with('user')->get();
 
         return view('homepage', compact('empresa', 'depoimentos'));
@@ -43,7 +47,7 @@ class DepoimentoController extends Controller
             'empresa_id' => 1,
         ]);
 
-        return redirect()->route('homepage');
+        return redirect()->route('home');
     }
 
     /**
@@ -77,7 +81,7 @@ class DepoimentoController extends Controller
             'texto' => $request->texto,
         ]);
 
-        return redirect()->route('homepage');
+        return redirect()->route('home');
     }
     /**
      * Remove the specified resource from storage.
@@ -87,7 +91,7 @@ class DepoimentoController extends Controller
         $depoimento = Depoimento::find($id);
         $depoimento->delete();
 
-        return redirect()->route('homepage');
+        return redirect()->route('home');
     }
 
     public function servico()
