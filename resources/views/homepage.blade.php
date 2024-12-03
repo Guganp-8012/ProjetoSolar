@@ -1,9 +1,9 @@
 @extends('layouts.base')
 
-@section('title', 'Homepage')
+@section('title', 'Apollo Solar - Página Inicial')
 
 @section('content')
-    <h6>Bem-vindo a ProjetoSolar</h6>
+    <h6>Bem-vindo a Apollo Solar</h6>
     <h1>Home</h1>
 
     <hr>
@@ -15,7 +15,7 @@
         <form action="{{ route('depoimento.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <textarea name="texto" id="texto" class="form-control" required></textarea>
+                <textarea name="texto" id="texto" class="form-control" placeholder="Digite seu depoimento" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
@@ -31,7 +31,6 @@
             <div class="card my-3">
                 <div class="card-body">
                     <p>{{ $depoimento->texto }}</p>
-                    <img src="{{ $depoimento->user->foto }}" alt="foto_do_usuario">
                     <strong>{{ $depoimento->user->name }}</strong>
                     <span class="text-muted"> em {{ $depoimento->created_at->format('d/m/Y') }}</span>
 

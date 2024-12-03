@@ -35,10 +35,10 @@
                             {{ $postagem->categoria->nome }}
                         </a>
 
-                        <hr>
-
                         @auth
                             @if(auth()->user()->funcionario == true)
+                                <hr>
+                            
                                 <div class="d-flex justify-content-around">
                                     <a href="{{ route('blog.edit', $postagem->id)  }}" class="btn btn-secondary">Editar Postagem</a>
 
