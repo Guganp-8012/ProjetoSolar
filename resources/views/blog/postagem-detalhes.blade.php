@@ -12,9 +12,8 @@
     <p>Publicado em: {{ \Carbon\Carbon::parse($postagem->data)->locale('pt_BR')->isoFormat('D [de] MMMM [de] YYYY') }} | Autor: {{ $postagem->user->name }}</p>
 
     <div>
-        @if($postagem->foto)
-            <img src="{{ asset('storage/' . $postagem->foto) }}" alt="Imagem da postagem" style="height: auto; width: 350px;">
-        @endif
+        <!-- <img src="{{ asset('storage/' . $postagem->foto) }}" alt="Imagem da postagem" style="height: auto; width: 350px;"> -->
+        <img src="https://demo.creativemox.com/sere/wp-content/uploads/sites/14/2023/09/alternative-energy-ecological-concept-e1696032458127.jpg" alt="Imagem da postagem" style="height: auto; width: 350px;">
         <p>{{ $postagem->conteudo }}</p>
     </div>
 
@@ -24,7 +23,8 @@
     <div class="list-group">
         @foreach($postsRecentes as $postRecente)
             <a href="{{ route('blog.detalhes', $postRecente->id) }}" class="list-group-item list-group-item-action d-flex align-items-start">
-                <img src="{{ $postRecente->foto }}" alt="foto_do_post" class="img-thumbnail me-3" style="width: 64px; height: 64px; object-fit: cover;">
+                <!-- <img src="{{ $postRecente->foto }}" alt="foto_do_post" class="img-thumbnail me-3" style="width: 64px; height: 64px; object-fit: cover;"> -->
+                <img src="https://demo.creativemox.com/sere/wp-content/uploads/sites/14/2023/09/alternative-energy-ecological-concept-e1696032458127.jpg" alt="foto_do_post" class="img-thumbnail me-3" style="width: 64px; height: 64px; object-fit: cover;">
                 <div>
                     <h5 class="mb-1">{{ $postRecente->titulo }}</h5>
                     <small class="text-muted">{{ date('d/m/Y', strtotime($postagem->data)) }}</small>
@@ -41,7 +41,8 @@
             <div class="card">
                 <div class="d-flex card-header justify-content-between">
                     <div>
-                        <img src="{{ $comentario->user->foto }}" alt="foto_do_usuario">
+                        <img src="https://i.pinimg.com/736x/0a/bb/a1/0abba119ad6bc5bc6e70388f99ccb3c6.jpg" class="img-thumbnail me-3" style="width: 64px; height: 64px; object-fit: cover;"  alt="foto_do_usuario">
+                        <!-- <img src="{{ $comentario->user->foto }}" alt="foto_do_usuario"> -->
                         <span>{{ $comentario->user->name }}</span>
                     </div>
 

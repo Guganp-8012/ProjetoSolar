@@ -31,17 +31,17 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('empresa.sobre') }}">Sobre Nós</a>
             </li>
-            
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('portfolio.index') }}">Portfólio</a>
-            </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('blog.index') }}">Blog</a>
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('empresa.contato') }} ">Contatos</a>
+                <a class="nav-link" href="{{ route('portfolio.index') }}">Portfólio</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('empresa.contato') }}">Contatos</a>
             </li>
 
             <!-- Botão para acionar modal de login -->
