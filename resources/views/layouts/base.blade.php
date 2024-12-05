@@ -161,7 +161,7 @@
         -->
 
         <footer class="bg-dark text-white text-center py-3">
-            <span>&copy; 2024 ProjetoSolar. Todos os direitos reservados. Criado por: <a href="https://github.com/guganp-8012" target="_blank">Guganp-8012</a></span>
+            <span>&copy; 2024 Apollo Solar. Todos os direitos reservados. Criado por: <a href="https://github.com/guganp-8012" target="_blank">Guganp-8012</a></span>
         </footer>
     </body>
     
