@@ -16,7 +16,7 @@
 
         <div class="form-group">
             <label for="foto">Foto Atual:</label>
-            <img src="{{ asset('storage/' . $postagem->foto) }}" alt="Foto da Postagem" class="img-thumbnail" style="max-width: 150px;">
+            <img src="{{ asset('storage/' . $postagem->foto) }}" alt="foto_atual" class="img-thumbnail" style="max-width: 150px;">
             <br>
             <label for="foto">Nova Foto:</label>
             <input type="file" name="foto" id="foto">
