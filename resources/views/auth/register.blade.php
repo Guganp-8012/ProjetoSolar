@@ -25,7 +25,7 @@
 
         <!-- Foto -->
         <div class="mt-4">
-            <x-input-label for="foto" :value="__('Foto')" />
+            <x-input-label for="foto" :value="__('Foto (opcional)')" />
             <x-text-input id="foto" class="block mt-1 w-full" type="file" name="foto" />
             <x-input-error :messages="$errors->get('foto')" class="mt-2" />
         </div>
