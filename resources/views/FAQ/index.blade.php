@@ -154,5 +154,12 @@
             </div>
         </div>
 
+        <a href="{{ route('home') }}" class="btn btn-secondary mt-3">Voltar para a página inicial</a>
+
+        <div class="mt-5 p-4 bg-light rounded text-center">
+            <h3>Tem dúvidas mais específicas?</h3>
+            <p>Se você não encontrou a resposta que procurava, nossa equipe está pronta para ajudar. Entre em contato conosco para uma consultoria personalizada!</p>
+            <a href="{{ route('empresa.contato') }}" class="btn btn-primary">Ir para a página de contato</a>
+        </div>
     </div>
 @endsection

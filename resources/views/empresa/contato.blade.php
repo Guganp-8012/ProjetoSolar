@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container my-5">
-    <h1 class="text-center mb-4">Entre em Contato</h1>
+    <h1 class="text-center mb-4 font-weight-bold">Entre em Contato</h1>
     <p class="text-center mb-5">
         Nossa equipe está pronta para ajudar você! Entre em contato pelo formulário abaixo ou utilize as informações disponíveis.
     </p>
@@ -12,7 +12,7 @@
     <div class="row">
         <!-- Formulário de Contato -->
         <div class="col-md-6">
-            <h3 class="mb-3">Envie sua Mensagem</h3>
+            <h3 class="mb-3 font-weight-bold">Envie sua Mensagem</h3>
             <form action="{{ route('contate.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
@@ -34,7 +34,7 @@
         <!-- Informações de Contato -->
         <div class="col-md-6 d-flex align-items-center justify-content-center">
             <div>
-                <h3 class="mb-3">Informações de Contato</h3>
+                <h3 class="mb-3 font-weight-bold">Informações de Contato</h3>
                 <p><strong>Endereço:</strong> {{ $empresa->endereco }}</p>
                 <p><strong>Email:</strong> <a href="{{ $empresa->email }}">{{ $empresa->email }}</a></p>
                 <p><strong>Telefone:</strong> <a href="{{ $empresa->telefone }}">{{ $empresa->telefone }}</a></p>
@@ -59,24 +59,6 @@
         background: #fff;
         padding: 2rem;
         border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    h1, h3 {
-        font-weight: bold;
-    }
-    p, label {
-        font-size: 1rem;
-        color: #555;
-    }
-    .form-control {
-        border-radius: 5px;
-    }
-    .btn-primary {
-        background-color: #007bff;
-        border: none;
-    }
-    .btn-primary:hover {
-        background-color: #0056b3;
     }
 </style>
 @endsection
