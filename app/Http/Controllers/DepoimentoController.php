@@ -47,7 +47,7 @@ class DepoimentoController extends Controller
             'empresa_id' => 1,
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Depoimento postado com sucesso!');
     }
 
     /**
@@ -81,7 +81,7 @@ class DepoimentoController extends Controller
             'texto' => $request->texto,
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Depoimento atualizado com sucesso!');
     }
     /**
      * Remove the specified resource from storage.
@@ -89,9 +89,13 @@ class DepoimentoController extends Controller
     public function destroy($id)
     {
         $depoimento = Depoimento::find($id);
+        if (!$depoimento) {
+            return redirect()->route('home')->withErrors(['error' => 'Depoimento não encontrado para exclusão.']);
+        }
+
         $depoimento->delete();
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Depoimento excluído com sucesso!');
     }
 
     public function servico()

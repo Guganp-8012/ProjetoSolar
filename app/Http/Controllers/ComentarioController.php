@@ -39,7 +39,7 @@ class ComentarioController extends Controller
             'postagem_id' => $postagem->id,
         ]);
 
-        return redirect()->route('blog.detalhes', $postagem->id);
+        return redirect()->route('blog.detalhes', $postagem->id)->with('success', 'Comentário postado com sucesso!');
     }
 
     /**
@@ -70,7 +70,7 @@ class ComentarioController extends Controller
         $comentario = Comentario::find($id);
         $comentario->update($request->all());
 
-        return redirect()->route('blog.detalhes', $comentario->postagem_id);
+        return redirect()->route('blog.detalhes', $comentario->postagem_id)->with('success', 'Comentário atualizado com sucesso!');
     }
 
     /**
@@ -79,8 +79,12 @@ class ComentarioController extends Controller
     public function destroy($id)
     {
         $comentario = Comentario::find($id);
+        if (!$comentario) {
+            return redirect()->route('blog.index')->withErrors(['error' => 'Comentário não encontrado para exclusão.']);
+        }
+
         $comentario->delete();
 
-        return redirect()->route('blog.detalhes', $comentario->postagem_id);
+        return redirect()->route('blog.detalhes', $comentario->postagem_id)->with('success', 'Comentário excluído com sucesso!');
     }
 }

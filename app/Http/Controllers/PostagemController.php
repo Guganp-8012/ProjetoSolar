@@ -56,7 +56,7 @@ class PostagemController extends Controller
             'data' => $request->data,
         ]);
 
-        return redirect()->route('blog.detalhes', ['id' => $postagem->id]);
+        return redirect()->route('blog.detalhes', ['id' => $postagem->id])->with('success', 'Postagem cadastrada com sucesso!');
     }
 
     /**
@@ -109,7 +109,7 @@ class PostagemController extends Controller
             'data' => $request->data,
         ]);
 
-        return redirect()->route('blog.index');
+        return redirect()->route('blog.index')->with('success', 'Postagem atualizada com sucesso!');
     }
 
 
@@ -119,8 +119,12 @@ class PostagemController extends Controller
     public function destroy($id)
     {
         $postagem = Postagem::find($id);
+        if (!$postagem) {
+            return redirect()->route('blog.index')->withErrors(['error' => 'Postagem não encontrada.']);
+        }
+        
         $postagem->delete();
         
-        return redirect()->route('blog.index');
+        return redirect()->route('blog.index')->with('success', 'Postagem excluída com sucesso!');
     }
 }

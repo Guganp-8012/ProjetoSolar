@@ -52,7 +52,7 @@ class PortfolioController extends Controller
             'economia' => $request->economia,
         ]);
 
-        return redirect()->route('portfolio.index');
+        return redirect()->route('portfolio.index')->with('success', 'Projeto cadastrado com sucesso!');
     }
 
     /**
@@ -94,7 +94,7 @@ class PortfolioController extends Controller
             'economia' => $request->economia,
         ]);
 
-        return redirect()->route('portfolio.index');
+        return redirect()->route('portfolio.index')->with('success', 'Projeto atualizado com sucesso!');
     }
 
     /**
@@ -103,8 +103,12 @@ class PortfolioController extends Controller
     public function destroy($id)
     {
         $portfolio = Portfolio::find($id);
+        if (!$portfolio) {
+            return redirect()->route('portfolio.index')->withErrors(['error' => 'Projeto não encontrado.']);
+        }
+        
         $portfolio->delete();
 
-        return redirect()->route('portfolio.index');
+        return redirect()->route('portfolio.index')->with('success', 'Projeto excluído com sucesso!');
     }
 }

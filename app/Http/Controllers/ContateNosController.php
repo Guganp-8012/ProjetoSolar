@@ -45,7 +45,7 @@ class ContateNosController extends Controller
             'empresa_id' => 1,
         ]);
     
-        return redirect()->route('empresa.contato');
+        return redirect()->route('empresa.contato')->with('success', 'Mensagem enviada com sucesso!');
     }
 
     /**

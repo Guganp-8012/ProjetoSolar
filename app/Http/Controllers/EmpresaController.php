@@ -49,7 +49,7 @@ class EmpresaController extends Controller
             'descricao' => $request->descricao,
         ]);
 
-        return redirect()->route('empresa.contato');
+        return redirect()->route('empresa.contato')->with('success', 'Empresa cadastrada com sucesso!');
     }
 
     /**
