@@ -10,7 +10,7 @@
         </div>
     </section>
 
-    @auth
+    @auth <!-- Se um funcionário estiver logado, mostra o botão para adicionar um novo projeto -->
         @if(auth()->user()->funcionario)
             <div class="container text-center mb-4">
                 <a href="{{ route('portfolio.create') }}" class="btn btn-primary">Adicionar Novo Projeto</a>
@@ -25,8 +25,7 @@
                 @foreach($portfolios as $portfolio)
                     <div class="card" style="width: 18rem;">
                         <!-- Foto do projeto -->
-                        <img src="https://eenergiasolar.com.br/wp-content/uploads/2021/03/DJI_1256-768x456.png" alt="foto_do_portfolio" class="card-img-top" style="height: 190px; object-fit: cover;">
-                        <!--<img src="{{ asset('storage/' . $portfolio->foto) }}" alt="foto_do_portfolio" class="card-img-top" style="height: 190px; object-fit: cover;">-->
+                        <img src="{{ asset('storage/' . $portfolio->foto) }} " alt="foto_do_portfolio" class="card-img-top" style="height: 190px; object-fit: cover;">
 
                         <div class="card-body">
                             <h5 class="card-title">{{ $portfolio->titulo }}</h5>
@@ -36,11 +35,11 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><strong>Cidade:</strong> {{ $portfolio->cidade }}</li>
                             <li class="list-group-item"><strong>Potência:</strong> {{ $portfolio->potencia }} kWp</li>
-                            <li class="list-group-item"><strong>Tipo:</strong> {{ ucfirst($portfolio->tipo) }}</li>
+                            <li class="list-group-item"><strong>Tipo:</strong> {{ $portfolio->tipo }}</li>
                             <li class="list-group-item"><strong>Economia:</strong> {{ $portfolio->economia }}%</li>
                         </ul>
 
-                        @auth
+                        @auth <!-- Se um funcionário estiver logado, mostra os botões de gerenciamento -->
                             @if(auth()->user()->funcionario == true)
                                 <div class="card-footer text-center">
                                     <a href="{{ route('portfolio.edit', $portfolio->id) }}" class="btn btn-secondary">Editar</a>

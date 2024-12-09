@@ -83,7 +83,7 @@ class PortfolioController extends Controller
         ]);
 
         $foto_caminho = $request->file('foto')->store('fotos_portfolio', 'public');
-
+        
         $portfolio->update([
             'titulo' => $request->titulo,
             'descricao' => $request->descricao,

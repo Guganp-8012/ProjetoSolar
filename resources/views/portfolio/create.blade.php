@@ -1,8 +1,10 @@
 @extends('layouts.base')
 
+@section('title', 'Registrar Projeto para Portfólio')
+
 @section('content')
 <div class="container">
-    <h1>Criar Novo Portfólio</h1>
+    <h1>Registrar Projeto para Portfólio</h1>
 
     <form action="{{ route('portfolio.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -36,14 +38,14 @@
             <label for="tipo">Tipo</label>
             <select id="tipo" name="tipo" class="form-control" required>
                 <option value="" disabled selected>Escolha o tipo do projeto</option>
-                <option value="residencial">Residencial</option>
-                <option value="comercial">Comercial</option>
-                <option value="industrial">Industrial</option>
-                <option value="rural">Rural</option>
-                <option value="publico">Público/Institucional</option>
-                <option value="hibrido">Híbrido</option>
-                <option value="off-grid">Autônomo</option>
-                <option value="on-grid">Conectado a Rede</option>
+                <option value="Residencial">Residencial</option>
+                <option value="Comercial">Comercial</option>
+                <option value="Industrial">Industrial</option>
+                <option value="Rural">Rural</option>
+                <option value="Publico">Público/Institucional</option>
+                <option value="Hibrido">Híbrido</option>
+                <option value="Autônomod">Autônomo</option>
+                <option value="Conectado a Rede">Conectado a Rede</option>
             </select>
         </div>
 
@@ -52,7 +54,9 @@
             <input type="number" id="economia" name="economia" class="form-control" step="0.01" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Adicionar Projeto para Portfólio</button>
+        <button type="submit" class="btn btn-primary">Adicionar Projeto</button>  
     </form>
+
+    <a href="{{ route('portfolio.index') }}"><button class="btn btn-secondary" style="margin-top: 10px;">Voltar</button></a>
 </div>
 @endsection

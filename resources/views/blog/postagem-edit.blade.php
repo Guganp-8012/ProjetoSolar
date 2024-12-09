@@ -35,6 +35,8 @@
         <div class="form-group">
             <label for="categoria_id">Categoria</label>
             <select name="categoria_id" id="categoria_id" class="form-control" required>
+                <option value="" disabled selected>Escolha a categoria da postagem</option>
+
                 @foreach($categorias as $categoria)
                     <option value="{{ $categoria->id }}" @if($postagem->categoria_id == $categoria->id) selected @endif>
                         {{ $categoria->nome }}
@@ -44,8 +46,10 @@
         </div>
 
         <div class="form-group">
-            <label for="user_id">Autor  </label>
+            <label for="user_id">Autor</label>
             <select name="user_id" id="user_id" class="form-control" required>
+                <option value="" disabled selected>Escolha o autor da postagem</option>
+
                 @foreach($users as $user)
                     <option value="{{ $user->id }}" @if($postagem->user_id == $user->id) selected @endif>
                         {{ $user->name }}
@@ -57,7 +61,5 @@
         <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
 
-    <a href="{{ route('blog.index') }}">
-        <button class="btn btn-secondary">Voltar</button>
-    </a>
+    <a href="{{ route('blog.index') }}"><button class="btn btn-secondary" style="margin-top: 10px;">Voltar</button></a>
 @endsection

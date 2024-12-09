@@ -46,12 +46,12 @@
 
     <section id="depoimentos" class="py-5">
         <h3>Deixe seu depoimento!</h3>
-        @auth
+        @auth <!-- Se alguém estiver logado, o formulário de depoimento aparece -->
             <!-- Formulário para Criar um Depoimento -->
             <form action="{{ route('depoimento.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <textarea name="texto" id="texto" class="form-control" required></textarea>
+                    <textarea name="texto" id="texto" class="form-control" placeholder="Digite seu depoimento" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
@@ -67,11 +67,11 @@
                     <div class="card my-3">
                         <div class="card-body">
                             <p>{{ $depoimento->texto }}</p>
-                            <img src="{{ $depoimento->user->foto }}" alt="foto_do_usuario">
+                            <img src="{{ $depoimento->user->foto }}" alt="foto_do_usuario" class="img-thumbnail me-3" style="width: 64px; height: 64px; object-fit: cover;>
                             <strong>{{ $depoimento->user->name }}</strong>
                             <span class="text-muted"> em {{ $depoimento->created_at->format('d/m/Y') }}</span>
 
-                            @auth
+                            @auth <!-- Se alguém estiver logado, mostra os botões de gerenciamento -->
                                 <!-- Botão de Editar -->
                                 <button class="btn btn-primary editar-depoimento" data-id="{{ $depoimento->id }}" data-texto="{{ $depoimento->texto }}" data-toggle="modal" data-target="#editarDepoimentoModal">Editar</button>
 

@@ -22,7 +22,5 @@
         <button type="submit" class="btn btn-primary">Atualizar Categoria</button>
     </form>
 
-    <a href="{{ route('categoria.index') }}">
-        <button class="btn btn-secondary">Voltar</button>
-    </a>
+    <a href="{{ route('categoria.index') }}"><button class="btn btn-secondary" style="margin-top: 10px;">Voltar</button></a>
 @endsection

@@ -25,6 +25,8 @@
         @endforeach
     </div>
 
-    <a href="{{ route('categoria.create') }}" class="btn btn-primary">Criar Categoria</a>
-    <a href="{{ route('blog.index') }}" class="btn btn-secondary">Voltar</a>
+    <div style="margin-top: 10px;">
+        <a href="{{ route('categoria.create') }}" class="btn btn-primary">Criar Categoria</a>
+        <a href="{{ route('blog.index') }}" class="btn btn-secondary">Voltar</a>
+    </div>
 @endsection

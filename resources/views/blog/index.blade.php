@@ -10,8 +10,8 @@
         </div>
     </section>
 
-    @auth
-        @if(auth()->user()->funcionario == true)
+    @auth <!-- Se um funcionário estiver logado, mostra os botões de gerenciamento -->
+        @if(auth()->user()->funcionario == true) 
             <div class="container text-center mb-4">
                 <a href="{{ route('blog.create') }}" class="btn btn-primary">Criar Postagem</a>
                 <a href="{{ route('categoria.index') }}" class="btn btn-secondary">Ver Categorias</a>
@@ -27,7 +27,7 @@
                     <a href="{{ route('blog.detalhes', $postagem->id) }}" style="text-decoration: none;">
                         <div class="card" style="width: 18rem;">
                             <!-- Imagem do post -->
-                            <img src="https://demo.creativemox.com/sere/wp-content/uploads/sites/14/2023/09/alternative-energy-ecological-concept-e1696032458127.jpg" alt="imagem_do_post" style="height: 190px; width: 100%; align-self: center;">
+                            <img src="{{ asset('storage/' . $postagem->foto) }}" alt="imagem_do_post" class="card-img-top" style="height: 190px; object-fit: cover;">
 
                             <div class="card-body">
                                 <h5 class="card-title">{{ $postagem->titulo }}</h5>
@@ -42,7 +42,7 @@
                                     {{ $postagem->categoria->nome }}
                                 </a>
 
-                                @auth
+                                @auth <!-- Se um funcionário estiver logado, mostra os botões de gerenciamento -->
                                     @if(auth()->user()->funcionario == true)
                                         <hr>
 

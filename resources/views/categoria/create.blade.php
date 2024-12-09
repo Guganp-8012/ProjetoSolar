@@ -21,7 +21,5 @@
         <button type="submit" class="btn btn-primary">Criar Categoria</button>
     </form>
 
-    <a href="{{ route('blog.index') }}">
-        <button class="btn btn-secondary">Voltar</button>
-    </a>
+    <a href="{{ route('blog.index') }}"><button class="btn btn-secondary" style="margin-top: 10px;">Voltar</button></a>
 @endsection

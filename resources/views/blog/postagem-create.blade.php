@@ -31,6 +31,8 @@
         <div class="form-group">
             <label for="categoria_id">Categoria</label>
             <select name="categoria_id" id="categoria_id" class="form-control" required>
+                <option value="" disabled selected>Escolha a categoria da postagem</option>
+
                 @foreach($categorias as $categoria)
                     <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
                 @endforeach
@@ -40,6 +42,8 @@
         <div class="form-group">
             <label for="user_id">Autor</label>
             <select name="user_id" id="user_id" class="form-control" required>
+                <option value="" disabled selected>Escolha o autor da postagem</option>
+
                 @foreach($users as $user)
                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                 @endforeach
@@ -48,6 +52,8 @@
 
         <button type="submit" class="btn btn-primary">Criar Postagem</button>
     </form>
-    <a href="{{ route('categoria.create') }}" class="btn btn-primary">Criar Categoria</a>
-    <a href="{{ route('blog.index') }}"><button class="btn btn-secondary">Voltar</button></a>
+    <div style="margin-top: 10px;">
+        <a href="{{ route('categoria.create') }}" class="btn btn-primary">Criar Categoria</a>
+        <a href="{{ route('blog.index') }}"><button class="btn btn-secondary">Voltar</button></a>
+    </div>
 @endsection
