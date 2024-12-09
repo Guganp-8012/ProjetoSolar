@@ -1,3 +1,11 @@
+# ProjetoSolar
+Projeto de site web para empresa de energia solar, criado em Laravel, com banco de dados MySQL
+
+# Notas:
+Faltou fazer uma página de perfil para o próprio usuário gerenciar seu perfil com suas informações, excluir conta e atualizar;
+Não foi possível corrigir os "bugs" relacionados ao retorno das imagens, além de faltar o tratamento relacionado ao perfil do usuário;
+Foram utilizadas algumas telas prontas do laravel para preencher lacunas onde o código não foi feito.
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
