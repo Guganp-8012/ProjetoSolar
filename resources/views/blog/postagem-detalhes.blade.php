@@ -12,9 +12,7 @@
     <p>Publicado em: {{ \Carbon\Carbon::parse($postagem->data)->locale('pt_BR')->isoFormat('D [de] MMMM [de] YYYY') }} | Autor: {{ $postagem->user->name }}</p>
 
     <div>
-        @if($postagem->foto)
-            <img src="{{ asset('storage/' . $postagem->foto) }}" alt="foto_do_post" style="height: auto; width: 350px;">
-        @endif
+        <img src="{{ asset('storage/' . $postagem->foto) }}" alt="foto_do_post" style="height: auto; width: 350px;">
 
         <p>{{ $postagem->conteudo }}</p>
     </div>
@@ -80,7 +78,7 @@
                         </div>
 
                         <!-- Formulário Edição de Comentário -->
-                        <form id="editar-comentario-form" action="{{ route('comentario.update', $comentario->id) }}" method="POST">
+                        <form id="editarComentarioForm" action="{{ route('comentario.update', $comentario->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="modal-body">
@@ -91,7 +89,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button> <!-- ajeitar -->
-                                <button type="submit" class="btn btn-primary" onclick="document.getElementById('editar-comentario-form').submit()">Atualizar</button>
+                                <button type="submit" class="btn btn-primary" onclick="document.getElementById('editarComentarioForm').submit()">Atualizar</button>
                             </div>
                         </form>
                     </div>
@@ -122,4 +120,14 @@
             <h4>Faça <a href="#" data-toggle="modal" data-target="#loginModal">login</a> para comentar.</h4>  
         @endguest
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const closeButton = document.querySelector('#editarComentarioModal .btn-secondary');
+
+            closeButton.addEventListener('click', function () {
+                $('#editarComentarioModal').modal('hide');
+            });
+        });
+    </script>
 @endsection
