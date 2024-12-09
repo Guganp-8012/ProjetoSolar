@@ -9,7 +9,7 @@ use App\Http\Controllers\DepoimentoController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\PostagemController;
 use App\Http\Controllers\PortfolioController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\FuncionarioController;
 
 Route::get('/', [DepoimentoController::class, 'index'])->name('home');
 
@@ -19,7 +19,7 @@ Route::get('/faqs', function () {return view('FAQ.index');})->name('FAQ.index');
 
 Route::get('/error404', function () {return view('error404');})->name('error404');
 
-Route::get('/sobre', [UserController::class, 'funcionarios'])->name('empresa.sobre');
+Route::get('/sobre', [FuncionarioController::class, 'index'])->name('empresa.sobre');
 
 Route::get('/servicos', [DepoimentoController::class, 'servico'])->name('servico.index');
 
@@ -53,19 +53,22 @@ Route::middleware('auth')->group(function () {
     Route::put('/blog/{id}', [PostagemController::class, 'update'])->name('blog.update');
     Route::delete('/blog/{id}', [PostagemController::class, 'destroy'])->name('blog.destroy');
 
-    // rever e organizar rotas de comentarios
-
     Route::post('/blog/{postagem}/comentarios', [ComentarioController::class, 'store'])->name('comentario.store');
     Route::get('/comentarios/{comentario}/edit', [ComentarioController::class, 'edit'])->name('comentario.edit');
     Route::put('/comentarios/{comentario}', [ComentarioController::class, 'update'])->name('comentario.update');
     Route::delete('/comentarios/{comentario}', [ComentarioController::class, 'destroy'])->name('comentario.destroy');
-
 
     Route::get('/portfolio/cadastrar', [PortfolioController::class, 'create'])->name('portfolio.create');
     Route::post('/portfolio', [PortfolioController::class, 'store'])->name('portfolio.store');
     Route::get('/portfolio/{id}/edit', [PortfolioController::class, 'edit'])->name('portfolio.edit');
     Route::put('/portfolio/{id}', [PortfolioController::class, 'update'])->name('portfolio.update');
     Route::delete('/portfolio/{id}', [PortfolioController::class, 'destroy'])->name('portfolio.destroy');
+
+    Route::get('/funcionario/cadastrar', [FuncionarioController::class, 'create'])->name('funcionario.create');
+    Route::post('/funcionario', [FuncionarioController::class, 'store'])->name('funcionario.store');
+    Route::get('/funcionario/{id}/edit', [FuncionarioController::class, 'edit'])->name('funcionario.edit');
+    Route::put('/funcionario/{id}', [FuncionarioController::class, 'update'])->name('funcionario.update');
+    Route::delete('/funcionario/{id}', [FuncionarioController::class, 'destroy'])->name('funcionario.destroy');
 });
 
 Route::get('/categoria/{id}', [CategoriaController::class, 'show'])->name('categoria.show');
