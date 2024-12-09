@@ -14,18 +14,42 @@
         <section class="mb-5">
             <h2 class="mb-4 text-center">Conheça nossa equipe</h2>
             <p class="text-center mb-5">Contamos com profissionais altamente qualificados, comprometidos em oferecer o melhor serviço e atendimento. Cada membro do time traz uma combinação única de expertise e paixão por energia sustentável.</p>
+            
+            @auth <!-- Se um funcionário estiver logado, mostra o botão para adicionar um novo projeto -->
+                @if(auth()->user()->funcionario)
+                    <div class="container text-center mb-4">
+                        <a href="{{ route('funcionario.create') }}" class="btn btn-primary">Cadastrar Novo Funcionário</a>
+                    </div>
+                @endif
+            @endauth
+            
             <div class="d-flex flex-wrap justify-content-center gap-4">
-                @foreach($users as $user)
-                    @if($user->funcionario == true)
+                @foreach($funcionarios as $funcionario) <!-- Se um usuário for um funcionário, mostra na lista da equipe -->
+                    @if($funcionario->funcionario == true)
                         <div class="card shadow-sm" style="width: 18rem;">
-                            <img src="{{ asset('storage/' . $user->foto) }}" class="card-img-top" alt="{{ $user->name }}">
+                            <img src="{{ asset('storage/' . $funcionario->foto) }}" class="card-img-top" alt="{{ $funcionario->name }}">
                             <div class="card-body text-center">
-                                <h5 class="card-title">{{ $user->name }}</h5>
-                                <p class="card-text text-muted">{{ $user->ocupacao }}</p>
+                                <h5 class="card-title">{{ $funcionario->name }}</h5>
+                                <p class="card-text text-muted">{{ $funcionario->ocupacao }}</p>
                             </div>
+                                @auth <!-- Se um funcionário estiver logado, mostra os botões de gerenciamento -->
+                                    @if(auth()->user()->funcionario == true)
+                                        <div class="card-footer d-flex justify-content-around">
+                                            <a href="{{ route('funcionario.edit', $funcionario->id) }}" class="btn btn-secondary">Editar Funcionário</a>
+
+                                            <form action="{{ route('funcionario.destroy', $funcionario->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Excluir</button>
+                                            </form>
+                                        </div>
+                                    @endif
+                                @endauth
                         </div>
                     @endif
                 @endforeach
+
+
             </div>
         </section>
 
