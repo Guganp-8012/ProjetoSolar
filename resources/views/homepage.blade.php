@@ -97,7 +97,7 @@
                                 </div>
 
                                 <!-- Formulário de Edição do Depoimento -->
-                                <form id="editar-depoimento-form" action="{{ route('depoimento.update', $depoimento->id) }}" method="POST">
+                                <form id="editarDepoimentoForm" action="{{ route('depoimento.update', $depoimento->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <div class="modal-body">
@@ -108,7 +108,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button> <!-- ajeitar -->
-                                        <button type="submit" class="btn btn-primary" onclick="document.getElementById('editar-depoimento-form').submit()">Atualizar</button>
+                                        <button type="submit" class="btn btn-primary" onclick="document.getElementById('editarDepoimentoForm').submit()">Atualizar</button>
                                     </div>
                                 </form>
                             </div>
@@ -128,4 +128,14 @@
             <a href="{{ route('empresa.contato') }}" class="btn btn-light btn-lg">Fale conosco</a>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const closeButton = document.querySelector('#editarDepoimentoModal .btn-secondary');
+
+            closeButton.addEventListener('click', function () {
+                $('#editarDepoimentoModal').modal('hide');
+            });
+        });
+    </script>
 @endsection 
